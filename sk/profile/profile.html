@@ -1,0 +1,216 @@
+<!DOCTYPE html> <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" class="ltr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title i18n="Skype">Skype</title>
+    <link rel="stylesheet" href="webClient.css" />
+    <link rel="stylesheet" href="loader.css" />
+    <link rel="stylesheet" href="mUI.css" />
+    <link href="common.css" type="text/css" rel="stylesheet" />
+    <link href="swx.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body class="swx desktop themeWhite" tabindex="-1">
+    <div class="shell mainStage" id="shellMainStage">
+      <div class="shell meComponent swx" id="meComponent" dir="ltr">
+        <div class="swxMe">
+          <swx-me-area
+            ><div class="Me Me--expanded">
+              <div class="Me-large Me-large--visible">
+                <div class="Me-info">
+                  <button
+                    class="btn secondary circle Me-collapseBtn"
+                    type="button"
+                    aria-label="Collapse profile"
+                  >
+                    <span class="iconfont chevronUp">Collapse profile</span>
+                  </button>
+                  <p class="Me-displayName fontSize-h3 strong">Display Name</p>
+                  <p class="Me-availability">Getting status...</p>
+                </div>
+                <div class="Me-content">
+                  <div class="Me-avatarContainer">
+                    <swx-avatar
+                      class="Me-avatar Me-avatar--large Avatar--fogTheme"
+                      params="size: 260, avatar: avatarUrl, displayName: displayNameUnescaped, status: avatarStatusClassName"
+                      ><div
+                        role="button"
+                        class="Avatar Avatar--size260 Avatar--presence Avatar--unknown"
+                        tabindex=""
+                        id="avatarPresenceIndicator"
+                      >
+                        <img
+                          class="Avatar-image"
+                          alt=""
+                          aria-hidden="true"
+                          role="presentation"
+                          src="https://avatar.skype.com/v1/avatars/self/public?size=m"
+                          style="display: block"
+                        />
+                      </div>
+                    </swx-avatar>
+                    <swx-avatar-file-picker class="Me-avatarFilePicker"
+                      ><div>
+                        <input
+                          type="file"
+                          accept="image/png, image/gif, image/jpeg"
+                          class="avatarFilePickerInput"
+                        />
+                        <button
+                          class="avatarOpenFilePickerInput"
+                          title="Upload a profile picture"
+                          aria-label="Upload avatar"
+                        ></button>
+                        <span class="avatarFilePickerButton">
+                          <span
+                            class="btn primary circle protected picturePickerBtn"
+                          >
+                            <span class="iconfont picturePicker picture"></span>
+                          </span>
+                        </span>
+                      </div>
+                    </swx-avatar-file-picker>
+                  </div>
+
+                  <div class="Me-accountInfoWrapper">
+                    <p class="Me-accountInfo-displayName fontSize-h3 strong">
+                      Display Name
+                    </p>
+                    <p class="Me-skypename" tabindex="0">Username</p>
+                  </div>
+
+                  <div class="Me-availabilityWrapper">
+                    <button
+                      aria-haspopup="true"
+                      class="Me-availabilityText Me-availabilityTextAnchor"
+                      aria-label="Change your online status (currently Getting status...)"
+                    >
+                      <span aria-label="Getting status..." id="availabilityText"
+                        >Getting status...</span
+                      >
+                      <span
+                        class="iconfont chevronDown Me-availabilityChevron"
+                      ></span>
+                    </button>
+                    <swx-me-presence-popup params="key: 'Me-expanded'"
+                      ><div
+                        class="PresencePopup popup popup-select arrow up"
+                        style="display: none"
+                      >
+                        <ul
+                          role="menu"
+                          class="PresencePopup-statusContainer"
+                          tabindex="0"
+                        >
+                          <li
+                            role="menuitem"
+                            class="PresencePopup-status popup-select-option PresencePopup-status--online"
+                            tabindex="-1"
+                            id="setPresenceOnline"
+                          >
+                            Online
+                          </li>
+
+                          <li
+                            role="menuitem"
+                            class="PresencePopup-status popup-select-option PresencePopup-status--idle"
+                            tabindex="-1"
+                            id="setPresenceAway"
+                          >
+                            Away
+                          </li>
+
+                          <li
+                            role="menuitem"
+                            class="PresencePopup-status popup-select-option PresencePopup-status--dnd"
+                            tabindex="-1"
+                            id="setPresenceDND"
+                          >
+                            Do not disturb
+                          </li>
+
+                          <li
+                            role="menuitem"
+                            class="PresencePopup-status popup-select-option PresencePopup-status--hidden"
+                            tabindex="-1"
+                            id="setPresenceInvisible"
+                          >
+                            Invisible
+                          </li>
+                        </ul>
+                      </div>
+                    </swx-me-presence-popup>
+                    <div
+                      class="Me-notificationsText"
+                      aria-label="Notifications off"
+                    >
+                      Notifications off
+                    </div>
+                  </div>
+                  <div class="Me-moodWrapper">
+                    <swx-me-mood-message
+                      params="key: 'Me-expanded'"
+                      class="Me-moodMessage"
+                    >
+                      <div id="moodMessage">
+                        <p
+                          class="Me-moodMessage-moodMessage"
+                          aria-label="Change activity message"
+                          title="Change activity message"
+                        >
+                          Change activity message
+                        </p>
+                        <button
+                          class="Me-moodMessage-editButton iconfont edit"
+                          type="button"
+                          aria-label="Edit activity message"
+                          title="Edit activity message"
+                        ></button>
+                      </div>
+
+                      <div
+                        class="Me-moodMessage-editMoodContainer"
+                        style="display: none"
+                      >
+                        <input
+                          class="Me-moodMessage-editMoodContainer--input"
+                          maxlength="200"
+                          placeholder="Change activity message"
+                        />
+                        <a
+                          href="#"
+                          class="Me-moodMessage-editMoodContainer--button iconfont ok"
+                          role="button"
+                          aria-label="Save changes"
+                        ></a>
+                        <a
+                          href="#"
+                          class="Me-moodMessage-editMoodContainer--button iconfont cancel"
+                          role="button"
+                          aria-label="Cancel changes"
+                        ></a>
+                      </div>
+                    </swx-me-mood-message>
+                  </div>
+
+                  <a
+                    class="Me-link"
+                    target="_blank"
+                    href="https://go.skype.com/myaccount?intsrc=client-_-webapp-_-production-_-go-myaccount"
+                    aria-label="Manage account"
+                  >
+                    <span class="iconfont settings Me-linkIcon"></span>
+                    <span class="fontSize-h3 Me-linkText">Manage account</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </swx-me-area>
+        </div>
+      </div>
+    </div>
+    <script defer src="profile.js"></script>
+  </body>
+</html>

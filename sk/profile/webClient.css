@@ -1,0 +1,51 @@
+html.swx,body.swx{
+    margin:0;
+    padding:0;
+    border:0;
+    vertical-align:baseline
+}
+.swx{
+    font-size:125%;
+    line-height:1;
+    min-height:100%;
+    position:absolute;
+    width:100%;
+    -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%
+}
+body.swx{
+    overflow:hidden;
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    min-height:420px;
+    min-width:320px
+}
+body{
+    display:-ms-flexbox;
+    -ms-flex-direction:column;
+    display:-webkit-flex;
+    -webkit-flex-direction:column;
+    display:flex;
+    height:100%;
+    flex-flow:column;
+    font-size:125%;
+    overflow:hidden
+}
+:root .swx .shell.mainStage{
+    -ms-flex:1;
+    -webkit-flex:1 1 auto;
+    flex:1 1;
+    overflow:hidden;
+    position:relative;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box
+}
+:root .swx .shell.meComponent{
+    height:0;
+    position:absolute;
+    width:100%
+}

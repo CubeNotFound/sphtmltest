@@ -1,0 +1,14 @@
+:root .swx.modernUI .themeWhite.side .navigation .navItem.icon.active{
+	background:#FFF;
+	border-top:2px solid orange;
+}
+:root .swx.modernUI .themeWhite.side .navigation .navItem.icon{
+	border-radius:0;
+}
+:root .swx.modernUI .themeWhite.side .recent.active, :root .swx.modernUI .themeWhite.side .searchItem.active{
+	background-color:#FFF;
+	border-top:2px solid orange;
+}
+:root .swx.desktop.dark.modernUI .side .recent.active:before, :root .swx.desktop.dark.modernUI .side .searchItem.active:before{
+	background-color: #1d1d1d;
+}
