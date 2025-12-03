@@ -1,0 +1,2684 @@
+:root body.swx,
+:root body .swx {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    line-height: 1;
+    white-space: normal;
+}
+:root body.swx *,
+:root body.swx *::before,
+:root body.swx *::after,
+:root body .swx *,
+:root body .swx *::before,
+:root body .swx *::after {
+    box-sizing: content-box;
+}
+:root .swx h1,
+:root .swx h2,
+:root .swx h3,
+:root .swx h4,
+:root .swx p,
+:root .swx ul,
+:root .swx li,
+:root .swx button,
+:root .swx input,
+:root .swx label,
+:root .swx a {
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    text-align: inherit;
+    text-indent: inherit;
+    text-transform: inherit;
+    white-space: inherit;
+    word-spacing: inherit;
+    padding: inherit;
+    margin: inherit;
+    background: inherit;
+    overflow: visible;
+    text-shadow: none;
+    width: auto;
+    height: auto;
+}
+:root .swx * {
+    line-height: 1;
+}
+:root .swx div,
+:root .swx span,
+:root .swx iframe,
+:root .swx h1,
+:root .swx h2,
+:root .swx h3,
+:root .swx h4,
+:root .swx p,
+:root .swx a,
+:root .swx img,
+:root .swx s,
+:root .swx small,
+:root .swx strong,
+:root .swx b,
+:root .swx ul,
+:root .swx li,
+:root .swx fieldset,
+:root .swx label,
+:root .swx table,
+:root .swx aside,
+:root .swx canvas,
+:root .swx menu,
+:root .swx section,
+:root .swx summary,
+:root .swx audio,
+:root .swx video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+:root .swx aside,
+:root .swx menu,
+:root .swx section {
+    display: block;
+}
+
+:root .swx ul {
+    list-style: none;
+}
+:root .swx table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.swx ::-webkit-scrollbar:disabled {
+    display: initial;
+}
+@-webkit-viewport {
+    width: device-width;
+}
+@-moz-viewport {
+    width: device-width;
+}
+@-ms-viewport {
+    width: device-width;
+}
+@-o-viewport {
+    width: device-width;
+}
+@viewport {
+    width: device-width;
+}
+:root .swx {
+    height: 100%;
+}
+:root body.swx {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    min-height: 420px;
+    min-width: 320px;
+    z-index: 0;
+}
+:root .swx .hide {
+    display: none !important;
+}
+:root .swx .offScreen {
+    display: block;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    margin: 0 -1px -1px -1px;
+    position: absolute;
+}
+:root .swx .scrollable {
+    overflow-y: scroll;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+:root .swx .fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: inherit;
+}
+:root .swx .circle {
+    border-radius: 0;
+    overflow: visible;
+}
+:root .swx .in-progress {
+    cursor: progress;
+}
+:root .swx a.in-progress {
+    color: #93999d !important;
+    cursor: progress !important;
+    pointer-events: none !important;
+}
+:root .swx .iconfont {
+    background-color: transparent;
+    height: 100%;
+    line-height: 100%;
+    speak: none;
+    text-rendering: optimizeLegibility;
+    width: 100%;
+}
+:root .swx .iconfont:before,
+:root .swx .iconfont:after {
+    font-family: "SkypeUISymbol";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.iconfont.callStart:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.callEnd:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.video:before,
+.iconfont.videoOn:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.dialpad:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.callIn:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.favourite:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.recent:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.display:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.presentation:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.contact:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.skypeAddressBook:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.botAdd:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.message:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.emoticon:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.videomail:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.file:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.menu:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.media:before {
+    content: "\E422";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.send:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.search:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.edit:before,
+.iconfont.topic:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.play:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.email:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.cross:before,
+.iconfont.cancel:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.add:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.up:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.left:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.right:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.chevronDown:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.picture:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.alert:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.information:before,
+.iconfont.info:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.errorSad:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.settings:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.link:before,
+.iconfont.url:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.target:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.alert:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.iconfont.flikDeletedStroke:before {
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+}
+@font-face {
+    font-family: "Segoe UI Local";
+    src: local("Segoe UI Light"), local("SegoeUI-Light"),
+        local("Segoe WP Light"), local("SegoeWP-Light");
+    font-style: normal;
+    font-weight: 200;
+}
+@font-face {
+    font-family: "Segoe UI Local";
+    src: local("Segoe UI"), local("SegoeUI"), local("Segoe WP"),
+        local("SegoeWP");
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Segoe UI Local";
+    src: local("Segoe UI Semibold"), local("SegoeUI-Semibold"),
+        local("Segoe WP Semibold"), local("SegoeWP-Semibold");
+    font-style: normal;
+    font-weight: 600;
+}
+@font-face {
+    font-family: "SkypeIcon";
+    src: url("SkypeIcon.eot?qgmikt");
+    src: url("SkypeIcon.eot?#iefixqgmikt")
+            format("embedded-opentype"),
+        url("SkypeIcon.woff?qgmikt") format("woff"),
+        url("SkypeIcon.ttf?qgmikt") format("truetype"),
+        url("SkypeIcon.svg?qgmikt#SkypeIcon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "SkypeUISymbol";
+    src: url("SkypeUISymbol-Regular.eot");
+    src: url("SkypeUISymbol-Regular.eot?#iefix")
+            format("embedded-opentype"),
+        url("SkypeUISymbol-Regular.woff") format("woff"),
+        url("SkypeUISymbol-Regular.ttf") format("truetype"),
+        url("SkypeUISymbol-Regular.svg#SkypeUISymbol-Regular")
+            format("svg");
+    font-style: normal;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: "SkypeUISymbol";
+    src: url("SkypeUISymbol-Bold.eot");
+    src: url("SkypeUISymbol-Bold.eot?#iefix")
+            format("embedded-opentype"),
+        url("SkypeUISymbol-Bold.woff") format("woff"),
+        url("SkypeUISymbol-Bold.ttf") format("truetype"),
+        url("SkypeUISymbol-Bold.svg#SkypeUISymbol-Regular")
+            format("svg");
+    font-style: normal;
+    font-weight: 600;
+    text-rendering: optimizeLegibility;
+}
+:root .swx {
+    color: #2b2b30;
+    font: 100%/1.25em "Segoe UI Local", "Segoe WP", "Segoe UI Web",
+        "SkypeUISymbol", Tahoma, "Helvetica Neue", Helvetica, "Meiryo UI",
+        Meiryo, Arial Unicode MS, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+:root .swx input,
+:root .swx button {
+    color: #2b2b30;
+    font: 100%/1.25em "Segoe UI Local", "Segoe WP", "Segoe UI Web",
+        "SkypeUISymbol", Tahoma, "Helvetica Neue", Helvetica, "Meiryo UI",
+        Meiryo, Arial Unicode MS, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+:root .swx h1,
+:root .swx h2,
+:root .swx h3,
+:root .swx h4,
+:root .swx p {
+    outline: medium none;
+    position: relative;
+}
+:root .swx input,
+:root .swx button {
+    font-weight: 600;
+}
+:root .swx b,
+:root .swx strong {
+    font-weight: 600;
+}
+:root .swx a {
+    text-decoration: none;
+    color: #0078ca;
+    cursor: default;
+    cursor: default;
+}
+:root .swx a.btn,
+:root .swx a.btn:hover,
+:root .swx a.btn:focus {
+    text-decoration: none;
+}
+:root .swx a:hover,
+:root .swx a:focus {
+    color: #00548d;
+    cursor: default;
+    cursor: default;
+}
+:root .swx {
+    font-size: 20px;
+    line-height: 1em;
+}
+:root .swx h1 {
+    font-size: 1.5em;
+    line-height: 1.1667em;
+    top: 0.1733333333em;
+    font-weight: 200;
+}
+
+:root .swx h1.strong,
+:root .swx h1 b,
+:root .swx h1 strong,
+:root .swx h1 a.strong,
+:root .swx h1 span.strong {
+    font-weight: 400;
+}
+:root .swx h2,
+:root .swx .fontSize-h2 {
+    font-size: 1.05em;
+    line-height: 1.4286em;
+    top: 0.3042857143em;
+    font-weight: 200;
+}
+
+:root .swx h2.strong,
+:root .swx h2 b,
+:root .swx h2 strong,
+:root .swx h2 a.strong,
+:root .swx h2 span.strong,
+:root .swx .fontSize-h2.strong,
+:root .swx .fontSize-h2 b,
+:root .swx .fontSize-h2 strong,
+:root .swx .fontSize-h2 a.strong,
+:root .swx .fontSize-h2 span.strong {
+    font-weight: 400;
+}
+:root .swx h3,
+:root .swx .fontSize-h3 {
+    font-size: 0.9em;
+    line-height: 1.3889em;
+    top: 0.35em;
+    font-weight: 400;
+}
+
+:root .swx h3.strong,
+:root .swx h3 b,
+:root .swx h3 strong,
+:root .swx h3 a.strong,
+:root .swx h3 span.strong,
+:root .swx .fontSize-h3.strong,
+:root .swx .fontSize-h3 b,
+:root .swx .fontSize-h3 strong,
+:root .swx .fontSize-h3 a.strong,
+:root .swx .fontSize-h3 span.strong {
+    font-weight: 500;
+}
+:root .swx h4,
+:root .swx .fontSize-h4 {
+    font-size: 0.75em;
+    line-height: 1.3334em;
+    top: 0.2566666667em;
+    font-weight: 400;
+}
+
+:root .swx h4.strong,
+:root .swx h4 b,
+:root .swx h4 strong,
+:root .swx h4 a.strong,
+:root .swx h4 span.strong,
+:root .swx .fontSize-h4.strong,
+:root .swx .fontSize-h4 b,
+:root .swx .fontSize-h4 strong,
+:root .swx .fontSize-h4 a.strong,
+:root .swx .fontSize-h4 span.strong {
+    font-weight: 600;
+}
+:root .swx p,
+:root .swx .fontSize-p {
+    font-size: 0.65em;
+    line-height: 1.5385em;
+    top: 0.3592307692em;
+    font-weight: 400;
+}
+
+:root .swx p.strong,
+:root .swx p b,
+:root .swx p strong,
+:root .swx p a.strong,
+:root .swx p span.strong,
+:root .swx .fontSize-p.strong,
+:root .swx .fontSize-p b,
+:root .swx .fontSize-p strong,
+:root .swx .fontSize-p a.strong,
+:root .swx .fontSize-p span.strong {
+    font-weight: 500;
+}
+:root .swx p.small,
+:root .swx .fontSize-p.small {
+    font-size: 0.6em;
+    line-height: 1.25em;
+    top: 0.215em;
+    font-weight: 400;
+}
+
+:root .swx p.small.strong,
+:root .swx p.small b,
+:root .swx p.small strong,
+:root .swx p.small a.strong,
+:root .swx p.small span.strong,
+:root .swx .fontSize-p.small.strong,
+:root .swx .fontSize-p.small b,
+:root .swx .fontSize-p.small strong,
+:root .swx .fontSize-p.small a.strong,
+:root .swx .fontSize-p.small span.strong {
+    font-weight: 600;
+}
+:root .swx p.smaller,
+:root .swx .fontSize-p.smaller {
+    font-size: 0.55em;
+    line-height: 1.3637em;
+    top: 0.2718181818em;
+    font-weight: 400;
+}
+
+:root .swx p.smaller.strong,
+:root .swx p.smaller b,
+:root .swx p.smaller strong,
+:root .swx p.smaller a.strong,
+:root .swx p.smaller span.strong,
+:root .swx .fontSize-p.smaller.strong,
+:root .swx .fontSize-p.smaller b,
+:root .swx .fontSize-p.smaller strong,
+:root .swx .fontSize-p.smaller a.strong,
+:root .swx .fontSize-p.smaller span.strong {
+    font-weight: 600;
+}
+:root .swx .grid:before,
+:root .swx .grid:after,
+:root .swx .row:before,
+:root .swx .row:after {
+    content: " ";
+    display: table;
+}
+:root .swx .grid:after,
+:root .swx .row:after {
+    clear: both;
+}
+:root .swx .column {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+}
+:root .swx .grid.container {
+    padding: 1em;
+}
+:root .swx.themeBlue,
+:root .swx .themeBlue {
+    background-color: #2C292C;
+    fill: #2C292C;
+    color: #fff;
+}
+:root .swx.themeBlue a,
+:root .swx .themeBlue a {
+    color: #fff;
+}
+:root .swx.themeBlue a:hover,
+:root .swx .themeBlue a:hover {
+    color: #fff;
+}
+:root .swx.themeWhite,
+:root .swx .themeWhite {
+	fill:#f0f3f8;
+    color: #2b2b30;
+}
+:root .swx.themeWhite a,
+:root .swx .themeWhite a {
+    color: #0078ca;
+}
+:root .swx.themeWhite a:hover,
+:root .swx .themeWhite a:hover {
+    color: #00548d;
+}
+:root .swx a.themeBlue {
+    color: #fff;
+}
+:root .swx a.themeBlue:hover {
+    color: #fff;
+}
+:root .swx a.themeWhite {
+    color: #0078ca;
+}
+:root .swx a.themeWhite:hover {
+    color: #00548d;
+}
+:root .swx button {
+    font-family: inherit;
+    margin: 0;
+    min-width: 0;
+}
+:root .swx button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+:root .swx .btn {
+    background-color: transparent;
+    border: none;
+    cursor: default;
+    display: block;
+    margin: 0 auto;
+    overflow: visible;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+:root .swx .btn:before {
+    border-color: transparent;
+    border-style: solid;
+    border-width: 2px;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 3em;
+    border-radius: 3em;
+    -webkit-transition: background-color 0.2s cubic-bezier(0.19, 1, 0.22, 1),
+        border-color 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    -o-transition: background-color 0.2s cubic-bezier(0.19, 1, 0.22, 1),
+        border-color 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: background-color 0.2s cubic-bezier(0.19, 1, 0.22, 1),
+        border-color 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+:root .swx .btn:after {
+    background-clip: padding-box;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 3px;
+    bottom: -3px;
+    content: "";
+    display: none;
+    left: -3px;
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 3em;
+    border-radius: 3em;
+    -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    -o-transition: -o-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+:root .swx .btn > .iconfont {
+    background-color: transparent;
+}
+:root .swx .btn > .iconfont:before {
+    float: none;
+    font-size: 2.6666666667em;
+    line-height: 0;
+    margin-right: 5px;
+    position: relative;
+    top: 0.3em;
+}
+:root .swx .btn > .iconfont:after {
+    float: none;
+    font-size: 2.6666666667em;
+    line-height: 0;
+    margin-left: 5px;
+    position: relative;
+    top: 0.3em;
+}
+:root .swx .btn.small > .iconfont:before {
+    top: 0.3em;
+}
+:root .swx .btn.large > .iconfont:before {
+    top: 0.3em;
+}
+:root .swx .btn.circle {
+    float: left;
+    height: 2em;
+    padding: 0 !important;
+    margin-left: 0.75em;
+    width: 2em;
+}
+:root .swx .btn.circle:first-child {
+    margin-left: 0;
+}
+:root .swx .btn.circle:after {
+    display: block;
+}
+:root .swx .btn.circle > .icon {
+    background-size: cover;
+    font-size: inherit;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+:root .swx .btn.circle > .iconfont {
+    background-color: transparent;
+    font-size: 2em;
+    height: 100%;
+    line-height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    direction: ltr;
+}
+:root .swx .btn.circle > .iconfont:before {
+    float: none;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    position: relative;
+    top: auto;
+}
+:root .swx .btn.circle.small {
+    height: 1.5em;
+    padding: 0;
+    width: 1.5em;
+}
+:root .swx .btn.circle.small > span.iconfont {
+    font-size: 1.5em;
+}
+:root .swx .btn.circle.large {
+    height: 2.5em;
+    padding: 0;
+    width: 2.5em;
+}
+:root .swx .btn.circle.large > span.iconfont {
+    font-size: 2.5em;
+}
+:root .swx .btn > span {
+    display: block;
+    position: relative;
+    width: auto;
+}
+:root .swx .btn:hover {
+    outline-width: 0;
+}
+:root .swx .btn:hover:before {
+    border-width: 3px;
+}
+:root .swx .btn:active {
+    outline-width: 0;
+}
+:root .swx .btn:active:before {
+    border-width: 3px;
+    -webkit-transform: scale(1.01, 1.04);
+    -ms-transform: scale(1.01, 1.04);
+    -o-transform: scale(1.01, 1.04);
+    transform: scale(1.01, 1.04);
+}
+:root .swx .btn:active:after {
+    -webkit-transform: scale(1.01, 1.04);
+    -ms-transform: scale(1.01, 1.04);
+    -o-transform: scale(1.01, 1.04);
+    transform: scale(1.01, 1.04);
+}
+:root .swx .btn:active.circle:before,
+:root .swx .btn:active.circle:after {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+:root .swx .btn.in-progress {
+    zoom: 1;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+:root .swx .btn.in-progress:hover:before,
+:root .swx .btn.in-progress:focus:before {
+    border-width: 2px;
+}
+
+:root .swx .btn.in-progress:active:before,
+:root .swx .btn.in-progress:active:after {
+    border-width: 2px;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+:root .swx .btn.in-progress {
+    cursor: progress;
+}
+:root .swx .btn.showSpinner {
+    padding: 0.15em 0 0.6em;
+}
+:root .swx .btn.showSpinner > span {
+    display: inline-block;
+    padding-left: 2.75em;
+    -webkit-transition: padding-left 0.3s ease-in-out;
+    -o-transition: padding-left 0.3s ease-in-out;
+    transition: padding-left 0.3s ease-in-out;
+}
+:root .swx .btn.showSpinner .spinner {
+    height: 1.9333333333em;
+    left: 0;
+    position: absolute;
+    top: -0.2em;
+    width: 1.9333333333em;
+}
+:root .swx .buttonRow:before,
+:root .swx .buttonRow:after {
+    content: " ";
+    display: table;
+}
+:root .swx .buttonRow:after {
+    clear: both;
+}
+:root .swx .buttonRow.triple > div {
+    padding: 0.25em;
+    width: 33%;
+}
+:root .swx .buttonRow.triple .alignLeft .btn {
+    float: left;
+}
+:root .swx .btn {
+    max-width: 320px;
+    padding: 8px 0 12px;
+}
+:root .swx .btn > span {
+    font-size: 0.75em;
+    font-weight: 400;
+    line-height: 1.3334em;
+    padding: 0 22px;
+}
+:root .swx .btn.small {
+    max-width: 320px;
+    padding: 6px 0 9px;
+}
+:root .swx .btn.small > span {
+    font-size: 0.6em;
+    font-weight: 400;
+    line-height: 1.25em;
+    padding: 0 15px;
+}
+:root .swx .btn.large {
+    max-width: 320px;
+    padding: 8px 0 12px;
+}
+:root .swx .btn.large > span {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5em;
+    padding: 0 22px;
+}
+:root .swx .btn:before,
+:root .swx .btn.primary:before {
+    background-color: #0076aa;
+}
+:root .swx .btn > span,
+:root .swx .btn.primary > span {
+    color: #fff;
+}
+:root .swx .btn:hover:before,
+:root .swx .btn:focus:before,
+:root .swx .btn.primary:hover:before,
+:root .swx .btn.primary:focus:before {
+    background-color: #0083b4;
+}
+:root .swx .btn:active:before,
+:root .swx .btn.primary:active:before {
+    background-color: #0095cc;
+}
+:root .swx .btn.secondary:before {
+    background-color: #66cff6;
+}
+:root .swx .btn.secondary > span {
+    color: #fff;
+}
+:root .swx .btn.secondary:hover:before,
+:root .swx .btn.secondary:focus:before {
+    background-color: #4dc7f5;
+}
+:root .swx .btn.secondary:active:before {
+    background-color: #33bff3;
+}
+:root .swx .btn.transparent:before {
+    background-color: transparent !important;
+}
+:root .swx .btn.transparent > span {
+    color: #0076aa !important;
+}
+:root .swx .btn.transparent:hover:before,
+:root .swx .btn.transparent:focus:before {
+    background-color: transparent !important;
+}
+:root .swx .btn.transparent:hover > span,
+:root .swx .btn.transparent:focus > span {
+    color: #0095cc !important;
+}
+:root .swx .btn.transparent:active:before {
+    background-color: transparent !important;
+}
+:root .swx .btn.transparent:active > span {
+    color: #0095cc;
+}
+:root .swx.themeBlue .btn:before,
+:root .swx.themeBlue .btn.primary:before {
+    background-color: #007fae;
+}
+:root .swx.themeBlue .btn > span,
+:root .swx.themeBlue .btn.primary > span {
+    color: #fff;
+}
+:root .swx.themeBlue .btn:hover:before,
+:root .swx.themeBlue .btn:focus:before,
+:root .swx.themeBlue .btn.primary:hover:before,
+:root .swx.themeBlue .btn.primary:focus:before {
+    background-color: #0076a2;
+}
+:root .swx.themeBlue .btn:active:before,
+:root .swx.themeBlue .btn.primary:active:before {
+    background-color: #00729c;
+}
+:root .swx.themeBlue .btn.secondary:before {
+    background-color: #0095cc;
+}
+:root .swx.themeBlue .btn.secondary > span {
+    color: #fff;
+}
+:root .swx.themeBlue .btn.secondary:hover:before,
+:root .swx.themeBlue .btn.secondary:focus:before {
+    background-color: #008cc0;
+}
+:root .swx.themeBlue .btn.secondary:active:before {
+    background-color: #0083b4;
+}
+:root .swx.themeBlue .btn.transparent:before {
+    background-color: transparent !important;
+}
+:root .swx.themeBlue .btn.transparent > span {
+    color: #fff !important;
+}
+:root .swx.themeBlue .btn.transparent:hover:before,
+:root .swx.themeBlue .btn.transparent:focus:before {
+    background-color: transparent !important;
+}
+:root .swx.themeBlue .btn.transparent:hover > span,
+:root .swx.themeBlue .btn.transparent:focus > span {
+    color: #b3e7fb !important;
+}
+:root .swx.themeBlue .btn.transparent:active:before {
+    background-color: transparent !important;
+}
+:root .swx.themeBlue .btn.transparent:active > span {
+    color: #b3e7fb;
+}
+:root .swx.themeWhite .btn:before,
+:root .swx.themeWhite .btn.primary:before {
+    background-color: #0076aa;
+}
+:root .swx.themeWhite .btn > span,
+:root .swx.themeWhite .btn.primary > span {
+    color: #fff;
+}
+:root .swx.themeWhite .btn:hover:before,
+:root .swx.themeWhite .btn:focus:before,
+:root .swx.themeWhite .btn.primary:hover:before,
+:root .swx.themeWhite .btn.primary:focus:before {
+    background-color: #0083b4;
+}
+:root .swx.themeWhite .btn:active:before,
+:root .swx.themeWhite .btn.primary:active:before {
+    background-color: #0095cc;
+}
+:root .swx.themeWhite .btn.secondary:before {
+    background-color: #0299dc;
+}
+:root .swx.themeWhite .btn.secondary > span {
+    color: #fff;
+}
+:root .swx.themeWhite .btn.secondary:hover:before,
+:root .swx.themeWhite .btn.secondary:focus:before {
+    background-color: #4dc7f5;
+}
+:root .swx.themeWhite .btn.secondary:active:before {
+    background-color: #33bff3;
+}
+:root .swx.themeWhite .btn.transparent:before {
+    background-color: transparent !important;
+}
+:root .swx.themeWhite .btn.transparent > span {
+    color: #0076aa !important;
+}
+:root .swx.themeWhite .btn.transparent:hover:before,
+:root .swx.themeWhite .btn.transparent:focus:before {
+    background-color: transparent !important;
+}
+:root .swx.themeWhite .btn.transparent:hover > span,
+:root .swx.themeWhite .btn.transparent:focus > span {
+    color: #0095cc !important;
+}
+:root .swx.themeWhite .btn.transparent:active:before {
+    background-color: transparent !important;
+}
+:root .swx.themeWhite .btn.transparent:active > span {
+    color: #0095cc;
+}
+:root .swx .themeBlue .btn:before,
+:root .swx .themeBlue .btn.primary:before {
+    background-color: #7eb700;
+}
+:root .swx .themeBlue .btn > span,
+:root .swx .themeBlue .btn.primary > span {
+    color: #fff;
+}
+:root .swx .themeBlue .btn:hover:before,
+:root .swx .themeBlue .btn:focus:before,
+:root .swx .themeBlue .btn.primary:hover:before,
+:root .swx .themeBlue .btn.primary:focus:before {
+    background-color: #5b8500;
+}
+:root .swx .themeBlue .btn:active:before,
+:root .swx .themeBlue .btn.primary:active:before {
+    background-color: #00729c;
+}
+:root .swx .themeBlue .btn.secondary:before {
+    background-color: #0095cc;
+}
+:root .swx .themeBlue .btn.secondary > span {
+    color: #fff;
+}
+:root .swx .themeBlue .btn.secondary:hover:before,
+:root .swx .themeBlue .btn.secondary:focus:before {
+    background-color: #008cc0;
+}
+:root .swx .themeBlue .btn.secondary:active:before {
+    background-color: #0083b4;
+}
+:root .swx .themeBlue .btn.transparent:before {
+    background-color: transparent !important;
+}
+:root .swx .themeBlue .btn.transparent > span {
+    color: #fff !important;
+}
+:root .swx .themeBlue .btn.transparent:hover:before,
+:root .swx .themeBlue .btn.transparent:focus:before {
+    background-color: transparent !important;
+}
+:root .swx .themeBlue .btn.transparent:hover > span,
+:root .swx .themeBlue .btn.transparent:focus > span {
+    color: #b3e7fb !important;
+}
+:root .swx .themeBlue .btn.transparent:active:before {
+    background-color: transparent !important;
+}
+:root .swx .themeBlue .btn.transparent:active > span {
+    color: #b3e7fb;
+}
+:root .swx .themeWhite .btn:before,
+:root .swx .themeWhite .btn.primary:before {
+    background-color: #0076aa;
+}
+:root .swx .themeWhite .btn > span,
+:root .swx .themeWhite .btn.primary > span {
+    color: #fff;
+}
+:root .swx .themeWhite .btn:hover:before,
+:root .swx .themeWhite .btn:focus:before,
+:root .swx .themeWhite .btn.primary:hover:before,
+:root .swx .themeWhite .btn.primary:focus:before {
+    background-color: #0083b4;
+}
+:root .swx .themeWhite .btn:active:before,
+:root .swx .themeWhite .btn.primary:active:before {
+    background-color: #0095cc;
+}
+:root .swx .themeWhite .btn.secondary:before {
+    background-color: #66cff6;
+}
+:root .swx .themeWhite .btn.secondary > span {
+    color: #fff;
+}
+:root .swx .themeWhite .btn.secondary:hover:before,
+:root .swx .themeWhite .btn.secondary:focus:before {
+    background-color: #4dc7f5;
+}
+:root .swx .themeWhite .btn.secondary:active:before {
+    background-color: #33bff3;
+}
+:root .swx .themeWhite .btn.transparent:before {
+    background-color: transparent !important;
+}
+:root .swx .themeWhite .btn.transparent > span {
+    color: #0076aa !important;
+}
+:root .swx .themeWhite .btn.transparent:hover:before,
+:root .swx .themeWhite .btn.transparent:focus:before {
+    background-color: transparent !important;
+}
+:root .swx .themeWhite .btn.transparent:hover > span,
+:root .swx .themeWhite .btn.transparent:focus > span {
+    color: #0095cc !important;
+}
+:root .swx .themeWhite .btn.transparent:active:before {
+    background-color: transparent !important;
+}
+:root .swx .themeWhite .btn.transparent:active > span {
+    color: #0095cc;
+}
+:root .swx .themeWhite .themeBlue .btn:before,
+:root .swx .themeWhite .themeBlue .btn.primary:before {
+    background-color: #007fae;
+}
+:root .swx .themeWhite .themeBlue .btn > span,
+:root .swx .themeWhite .themeBlue .btn.primary > span {
+    color: #fff;
+}
+:root .swx .themeWhite .themeBlue .btn:hover:before,
+:root .swx .themeWhite .themeBlue .btn:focus:before,
+:root .swx .themeWhite .themeBlue .btn.primary:hover:before,
+:root .swx .themeWhite .themeBlue .btn.primary:focus:before {
+    background-color: #0076a2;
+}
+:root .swx .themeWhite .themeBlue .btn:active:before,
+:root .swx .themeWhite .themeBlue .btn.primary:active:before {
+    background-color: #00729c;
+}
+:root .swx .themeWhite .themeBlue .btn.secondary:before {
+    background-color: #0095cc;
+}
+:root .swx .themeWhite .themeBlue .btn.secondary > span {
+    color: #fff;
+}
+:root .swx .themeWhite .themeBlue .btn.secondary:hover:before,
+:root .swx .themeWhite .themeBlue .btn.secondary:focus:before {
+    background-color: #008cc0;
+}
+:root .swx .themeWhite .themeBlue .btn.secondary:active:before {
+    background-color: #0083b4;
+}
+:root .swx .themeWhite .themeBlue .btn.transparent:before {
+    background-color: transparent !important;
+}
+:root .swx .themeWhite .themeBlue .btn.transparent > span {
+    color: #fff !important;
+}
+:root .swx .themeWhite .themeBlue .btn.transparent:hover:before,
+:root .swx .themeWhite .themeBlue .btn.transparent:focus:before {
+    background-color: transparent !important;
+}
+:root .swx .themeWhite .themeBlue .btn.transparent:hover > span,
+:root .swx .themeWhite .themeBlue .btn.transparent:focus > span {
+    color: #b3e7fb !important;
+}
+:root .swx .themeWhite .themeBlue .btn.transparent:active:before {
+    background-color: transparent !important;
+}
+:root .swx .themeWhite .themeBlue .btn.transparent:active > span {
+    color: #b3e7fb;
+}
+:root .swx .themeBlue .themeWhite .btn:before,
+:root .swx .themeBlue .themeWhite .btn.primary:before {
+    background-color: #0076aa;
+}
+:root .swx .themeBlue .themeWhite .btn > span,
+:root .swx .themeBlue .themeWhite .btn.primary > span {
+    color: #fff;
+}
+:root .swx .themeBlue .themeWhite .btn:hover:before,
+:root .swx .themeBlue .themeWhite .btn:focus:before,
+:root .swx .themeBlue .themeWhite .btn.primary:hover:before,
+:root .swx .themeBlue .themeWhite .btn.primary:focus:before {
+    background-color: #0083b4;
+}
+:root .swx .themeBlue .themeWhite .btn:active:before,
+:root .swx .themeBlue .themeWhite .btn.primary:active:before {
+    background-color: #0095cc;
+}
+:root .swx .themeBlue .themeWhite .btn.secondary:before {
+    background-color: #66cff6;
+}
+:root .swx .themeBlue .themeWhite .btn.secondary > span {
+    color: #fff;
+}
+:root .swx .themeBlue .themeWhite .btn.secondary:hover:before,
+:root .swx .themeBlue .themeWhite .btn.secondary:focus:before {
+    background-color: #4dc7f5;
+}
+:root .swx .themeBlue .themeWhite .btn.secondary:active:before {
+    background-color: #33bff3;
+}
+:root .swx .themeBlue .themeWhite .btn.transparent:before {
+    background-color: transparent !important;
+}
+:root .swx .themeBlue .themeWhite .btn.transparent > span {
+    color: #0076aa !important;
+}
+:root .swx .themeBlue .themeWhite .btn.transparent:hover:before,
+:root .swx .themeBlue .themeWhite .btn.transparent:focus:before {
+    background-color: transparent !important;
+}
+:root .swx .themeBlue .themeWhite .btn.transparent:hover > span,
+:root .swx .themeBlue .themeWhite .btn.transparent:focus > span {
+    color: #0095cc !important;
+}
+:root .swx .themeBlue .themeWhite .btn.transparent:active:before {
+    background-color: transparent !important;
+}
+:root .swx .themeBlue .themeWhite .btn.transparent:active > span {
+    color: #0095cc;
+}
+:root .swx .btn.red:before,
+:root .swx .btn.primary.red:before,
+:root .swx .btn.secondary.red:before {
+    background-color: #e81123 !important;
+}
+:root .swx .btn.red > span,
+:root .swx .btn.primary.red > span,
+:root .swx .btn.secondary.red > span {
+    color: #fff !important;
+}
+:root .swx .btn.red:hover:before,
+:root .swx .btn.red:focus:before,
+:root .swx .btn.primary.red:hover:before,
+:root .swx .btn.primary.red:focus:before,
+:root .swx .btn.secondary.red:hover:before,
+:root .swx .btn.secondary.red:focus:before {
+    background-color: #d71020 !important;
+}
+:root .swx .btn.red:active:before,
+:root .swx .btn.primary.red:active:before,
+:root .swx .btn.secondary.red:active:before {
+    background-color: #d10f20 !important;
+}
+:root .swx span.emoticon,
+:root .swx #recents span.emoticon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    color: transparent;
+    font-size: 0;
+    overflow: hidden;
+}
+:root .swx span.emoticon canvas,
+:root .swx #recents span.emoticon canvas {
+    height: 100%;
+    width: 100%;
+}
+:root .swx span.emoticon span.emoSprite,
+:root .swx #recents span.emoticon span.emoSprite {
+    width: 20px;
+    display: inline-block;
+    position: relative;
+}
+:root .swx span.emoticon span.emoSprite:before,
+:root .swx #recents span.emoticon span.emoSprite:before {
+    position: absolute;
+    left: 0;
+}
+:root .swx span.emoticon.large,
+:root .swx #recents span.large.emoticon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    color: transparent;
+    font-size: 0;
+    overflow: hidden;
+}
+:root .swx span.emoticon.large span.emoSprite,
+:root .swx #recents span.large.emoticon span.emoSprite {
+    width: 40px;
+    display: inline-block;
+}
+:root .swx .fixSmall span.emoticon,
+:root .swx .fixSmall #recents span.emoticon,
+:root .swx #recents .fixSmall span.emoticon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+    margin: -6px 0 0 0;
+}
+:root .swx #recents span.emoticon {
+    margin-bottom: 1px;
+}
+:root .swx .spinner {
+    padding: 0px;
+    animation-name: initial;
+    -webkit-animation-name: initial;
+    -moz-animation-name: initial;
+    -ms-animation-name: initial;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+:root .swx .spinner .circle {
+    height: 16%;
+    left: 42%;
+    top: 42%;
+    width: 16%;
+    position: absolute;
+}
+:root .swx .spinner .circle div {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+:root .swx .spinner .circle .position {
+    top: -250%;
+}
+:root .swx .spinner .circle .shape {
+    background-color: #0076aa;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+:root .swx .spinner.small .circle {
+    height: 24%;
+    left: 38%;
+    top: 38%;
+    width: 24%;
+}
+:root .swx .spinner.small .circle .position {
+    top: -150%;
+}
+:root .swx .spinner.blue .circle .shape {
+    background-color: #0076aa;
+}
+:root .swx .spinner.blue .circle .shape:after {
+    border-color: #0076aa;
+}
+:root .swx .spinner {
+    -webkit-animation-direction: normal;
+    animation-direction: normal;
+    -webkit-animation-duration: 1.4s;
+    animation-duration: 1.4s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+:root .swx .spinner .circle .rotate,
+:root .swx .spinner .circle .scale {
+    -webkit-animation-direction: normal;
+    animation-direction: normal;
+    -webkit-animation-duration: 1.4s;
+    animation-duration: 1.4s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+:root .swx .spinner .circle.one .rotate {
+    -webkit-animation-name: spinner-one-rotate;
+    animation-name: spinner-one-rotate;
+}
+:root .swx .spinner .circle.one .scale {
+    -webkit-animation-name: spinner-one-scale;
+    animation-name: spinner-one-scale;
+}
+:root .swx .spinner .circle.two .rotate {
+    -webkit-animation-name: spinner-two-rotate;
+    animation-name: spinner-two-rotate;
+}
+:root .swx .spinner .circle.two .scale {
+    -webkit-animation-name: spinner-two-scale;
+    animation-name: spinner-two-scale;
+}
+:root .swx .spinner .circle.three .rotate {
+    -webkit-animation-name: spinner-three-rotate;
+    animation-name: spinner-three-rotate;
+}
+:root .swx .spinner .circle.three .scale {
+    -webkit-animation-name: spinner-three-scale;
+    animation-name: spinner-three-scale;
+}
+:root .swx .spinner .circle.four .rotate {
+    -webkit-animation-name: spinner-four-rotate;
+    animation-name: spinner-four-rotate;
+}
+:root .swx .spinner .circle.four .scale {
+    -webkit-animation-name: spinner-four-scale;
+    animation-name: spinner-four-scale;
+}
+:root .swx .spinner.small .circle.one .rotate {
+    -webkit-animation-name: spinner-small-one-rotate;
+    animation-name: spinner-small-one-rotate;
+}
+:root .swx .spinner.small .circle.one .scale {
+    -webkit-animation-name: spinner-small-one-scale;
+    animation-name: spinner-small-one-scale;
+}
+:root .swx .spinner.small .circle.two .rotate {
+    -webkit-animation-name: spinner-small-two-rotate;
+    animation-name: spinner-small-two-rotate;
+}
+:root .swx .spinner.small .circle.two .scale {
+    -webkit-animation-name: spinner-small-two-scale;
+    animation-name: spinner-small-two-scale;
+}
+:root .swx .spinner.small .circle.three .rotate {
+    -webkit-animation-name: spinner-small-three-rotate;
+    animation-name: spinner-small-three-rotate;
+}
+:root .swx .spinner.small .circle.three .scale {
+    -webkit-animation-name: spinner-small-three-scale;
+    animation-name: spinner-small-three-scale;
+}
+:root .swx .spinner.small .circle.four .rotate {
+    -webkit-animation-name: spinner-small-four-rotate;
+    animation-name: spinner-small-four-rotate;
+}
+:root .swx .spinner.small .circle.four .scale {
+    -webkit-animation-name: spinner-small-four-scale;
+    animation-name: spinner-small-four-scale;
+}
+@-webkit-keyframes spinner-one-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.65, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.65, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-one-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.65, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.65, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-one-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    33.33% {
+        -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+        -o-transform: scale(0.35);
+        transform: scale(0.35);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 1, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 1, 1);
+    }
+    52.38% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.78, 1);
+        animation-timing-function: cubic-bezier(0.8, 0, 0.78, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes spinner-one-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    33.33% {
+        -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+        -o-transform: scale(0.35);
+        transform: scale(0.35);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 1, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 1, 1);
+    }
+    52.38% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.78, 1);
+        animation-timing-function: cubic-bezier(0.8, 0, 0.78, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        transform: scale(1.15);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes spinner-two-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.76, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.76, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-two-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.76, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.76, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-two-scale {
+    0% {
+        -webkit-transform: scale(0.96);
+        -ms-transform: scale(0.96);
+        -o-transform: scale(0.96);
+        transform: scale(0.96);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    4.76% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    38.1% {
+        -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+        -o-transform: scale(0.35);
+        transform: scale(0.35);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    57.14% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    100% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+}
+@keyframes spinner-two-scale {
+    0% {
+        -webkit-transform: scale(0.96);
+        -ms-transform: scale(0.96);
+        -o-transform: scale(0.96);
+        transform: scale(0.96);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    4.76% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    38.1% {
+        -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+        -o-transform: scale(0.35);
+        transform: scale(0.35);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    57.14% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    100% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+}
+@-webkit-keyframes spinner-three-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.88, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.88, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-three-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.88, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.88, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-three-scale {
+    0% {
+        -webkit-transform: scale(0.96);
+        -ms-transform: scale(0.96);
+        -o-transform: scale(0.96);
+        transform: scale(0.96);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    9.52% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    42.86% {
+        -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+        -o-transform: scale(0.35);
+        transform: scale(0.35);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    61.9% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    100% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+}
+@keyframes spinner-three-scale {
+    0% {
+        -webkit-transform: scale(0.96);
+        -ms-transform: scale(0.96);
+        -o-transform: scale(0.96);
+        transform: scale(0.96);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    9.52% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    42.86% {
+        -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+        -o-transform: scale(0.35);
+        transform: scale(0.35);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    61.9% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    100% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+}
+@-webkit-keyframes spinner-four-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(1, 0.2, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(1, 0.2, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-four-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(1, 0.2, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(1, 0.2, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-four-scale {
+    0% {
+        -webkit-transform: scale(0.96);
+        -ms-transform: scale(0.96);
+        -o-transform: scale(0.96);
+        transform: scale(0.96);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    14.29% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    47.62% {
+        -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+        -o-transform: scale(0.35);
+        transform: scale(0.35);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    66.67% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    100% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+}
+@keyframes spinner-four-scale {
+    0% {
+        -webkit-transform: scale(0.96);
+        -ms-transform: scale(0.96);
+        -o-transform: scale(0.96);
+        transform: scale(0.96);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    14.29% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    47.62% {
+        -webkit-transform: scale(0.35);
+        -ms-transform: scale(0.35);
+        -o-transform: scale(0.35);
+        transform: scale(0.35);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    66.67% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    100% {
+        -webkit-transform: scale(0.45);
+        -ms-transform: scale(0.45);
+        -o-transform: scale(0.45);
+        transform: scale(0.45);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+}
+@-webkit-keyframes spinner-small-one-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.65, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.65, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-small-one-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.65, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.65, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-small-one-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    33.33% {
+        -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 1, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 1, 1);
+    }
+    52.38% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.78, 1);
+        animation-timing-function: cubic-bezier(0.8, 0, 0.78, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes spinner-small-one-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    33.33% {
+        -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 1, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 1, 1);
+    }
+    52.38% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-animation-timing-function: cubic-bezier(0.8, 0, 0.78, 1);
+        animation-timing-function: cubic-bezier(0.8, 0, 0.78, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes spinner-small-two-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.76, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.76, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-small-two-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.76, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.76, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-small-two-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    4.76% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    38.1% {
+        -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    57.14% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes spinner-small-two-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    4.76% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    38.1% {
+        -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    57.14% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes spinner-small-three-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.88, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.88, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-small-three-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(0.88, 0.21, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(0.88, 0.21, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-small-three-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    9.52% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    42.86% {
+        -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    61.9% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes spinner-small-three-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    9.52% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    42.86% {
+        -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    61.9% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes spinner-small-four-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(1, 0.2, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(1, 0.2, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spinner-small-four-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-animation-timing-function: cubic-bezier(1, 0.2, 0.25, 0.76);
+        animation-timing-function: cubic-bezier(1, 0.2, 0.25, 0.76);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinner-small-four-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    14.29% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    47.62% {
+        -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    66.67% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        -o-transform: scale(0.5);
+        transform: scale(0.5);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes spinner-small-four-scale {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    14.29% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    47.62% {
+        -webkit-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    66.67% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    }
+    72.62% {
+        -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        -o-transform: scale(0.5);
+        transform: scale(0.5);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+:root .swx .tile {
+    display: block;
+    position: relative;
+    z-index: 0;
+}
+:root .swx .tile > .tileAvatar {
+    display: none;
+    position: absolute;
+    height: 2em;
+    width: 2em;
+}
+:root .swx .tile > .tileAvatar > .tileImage {
+    background-color: #85d9f8;
+    -ms-high-contrast-adjust: none;
+    display: block;
+    overflow: visible;
+    position: absolute;
+    height: 2.3em;
+    width: 2.3em;
+    left: -0.15em;
+    top: 0;
+    opacity: inherit;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transform: scale(0.8695652174);
+    -ms-transform: scale(0.8695652174);
+    -o-transform: scale(0.8695652174);
+    transform: scale(0.8695652174);
+}
+:root .swx .tile > .tileAvatar > .tileImage .iconfont {
+    display: none;
+}
+:root .swx .tile > .tileAvatar > .tileImage > img {
+    left: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+:root .swx .tile > .tileAvatar > .tileImage > img:-moz-loading {
+    display: none;
+}
+:root .swx .tile > .tileAvatar.circle {
+    display: block;
+    overflow: inherit;
+}
+:root .swx .tile > .tileText {
+    float: left;
+    position: relative;
+}
+:root .swx .tile .tileName {
+    display: block;
+    position: relative;
+}
+:root .swx .tile h1,
+:root .swx .tile h2,
+:root .swx .tile h3,
+:root .swx .tile p {
+    text-overflow: ellipsis;
+    text-rendering: auto;
+    white-space: nowrap;
+    word-break: break-all;
+}
+:root .swx .tile > .tileAvatar.circle + .tileText {
+    padding-left: 2.75em;
+}
+@-webkit-keyframes anime-avatar-pulse {
+    0%,
+    100% {
+        -webkit-transform: scale(0.877193);
+        -ms-transform: scale(0.877193);
+        -o-transform: scale(0.877193);
+        transform: scale(0.877193);
+    }
+    37.5% {
+        -webkit-transform: scale(0.877193);
+        -ms-transform: scale(0.877193);
+        -o-transform: scale(0.877193);
+        transform: scale(0.877193);
+        -webkit-animation-timing-function: cubic-bezier(1, 0, 0.78, 1);
+        animation-timing-function: cubic-bezier(1, 0, 0.78, 1);
+    }
+    41.67% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+}
+@keyframes anime-avatar-pulse {
+    0%,
+    100% {
+        -webkit-transform: scale(0.877193);
+        -ms-transform: scale(0.877193);
+        -o-transform: scale(0.877193);
+        transform: scale(0.877193);
+    }
+    37.5% {
+        -webkit-transform: scale(0.877193);
+        -ms-transform: scale(0.877193);
+        -o-transform: scale(0.877193);
+        transform: scale(0.877193);
+        -webkit-animation-timing-function: cubic-bezier(1, 0, 0.78, 1);
+        animation-timing-function: cubic-bezier(1, 0, 0.78, 1);
+    }
+    41.67% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+    }
+}
+
+.Me-sky{
+    display:none !important;
+}
+
+.Me-displayName{
+    font-size:0.75em !important;
+}

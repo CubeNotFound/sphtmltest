@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html lang="en" class="ltr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+
+    <title i18n="Skype">Skype</title>
+    <link
+      rel="stylesheet"
+      href="webClient.css"
+      data-elementquery-processed=""
+    />
+    <link rel="stylesheet" href="loader.css" data-elementquery-processed="" />
+    <link rel="stylesheet" href="mUI.css" data-elementquery-processed="" />
+    <link href="common.css" type="text/css" rel="stylesheet" />
+    <link href="swx.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body class="swx desktop themeWhite" tabindex="-1">
+    <div
+      class="shell notifications"
+      id="notifications"
+      role="alert"
+      aria-atomic="true"
+    ></div>
+
+    <div class="shell mainStage" id="shellMainStage">
+      <div
+        class="shell meComponent swx showFocusRing"
+        id="meComponent"
+        dir="ltr"
+      >
+        <div class="swxMe">
+          <swx-me-area
+            ><div class="Me" data-bind="css: { 'Me--expanded': isExpanded() }">
+              <div class="Me-small">
+                <div
+                  class="Me-presenceStatus"
+                  tabindex="0"
+                  data-bind="event: { keypress: triggerPresencePopup.bind(null, 'Me-collapsed'), click: triggerPresencePopup.bind(null, 'Me-collapsed') },l10n_attr: {'aria-label': 'accessibility_me_changePresenceStatusAriaLabel'}, clickBubble: false"
+                  aria-label="Change your online status (currently {currentStatus})"
+                >
+                  <button
+                    class="btn secondary circle Me-openPresencePopup"
+                    type="button"
+                  >
+                    <span class="iconfont chevronDown"></span>
+                  </button>
+                </div>
+                <swx-me-presence-popup
+                  params="key: 'Me-collapsed'"
+                  class="Me-presencePopup"
+                  ><div
+                    class="PresencePopup popup popup-select arrow up"
+                    style="display: none"
+                    data-bind="visible: isOpened, clickBubble: false"
+                  >
+                    <ul
+                      role="menu"
+                      class="PresencePopup-statusContainer"
+                      data-bind="foreach: presenceStatuses, keyboardNavigation: { itemSelector: 'li:not(.popup-select-option--selected)' }"
+                      tabindex="0"
+                    >
+                      <li
+                        role="menuitem"
+                        data-bind="css: $parent.getPresenceStatusCssClasses($index()), click: $parent.updateStatus.bind(null, $index()), enterKey: $parent.updateStatus.bind(null, $index()), l10n: { key: l10nKey }, clickBubble: false"
+                        class="PresencePopup-status popup-select-option PresencePopup-status--online"
+                        tabindex="-1"
+                      >
+                        Online
+                      </li>
+
+                      <li
+                        role="menuitem"
+                        data-bind="css: $parent.getPresenceStatusCssClasses($index()), click: $parent.updateStatus.bind(null, $index()), enterKey: $parent.updateStatus.bind(null, $index()), l10n: { key: l10nKey }, clickBubble: false"
+                        class="PresencePopup-status popup-select-option PresencePopup-status--idle"
+                        tabindex="-1"
+                      >
+                        Away
+                      </li>
+
+                      <li
+                        role="menuitem"
+                        data-bind="css: $parent.getPresenceStatusCssClasses($index()), click: $parent.updateStatus.bind(null, $index()), enterKey: $parent.updateStatus.bind(null, $index()), l10n: { key: l10nKey }, clickBubble: false"
+                        class="PresencePopup-status popup-select-option PresencePopup-status--dnd"
+                        tabindex="-1"
+                      >
+                        Do not disturb
+                      </li>
+
+                      <li
+                        role="menuitem"
+                        data-bind="css: $parent.getPresenceStatusCssClasses($index()), click: $parent.updateStatus.bind(null, $index()), enterKey: $parent.updateStatus.bind(null, $index()), l10n: { key: l10nKey }, clickBubble: false"
+                        class="PresencePopup-status popup-select-option PresencePopup-status--hidden"
+                        tabindex="-1"
+                      >
+                        Invisible
+                      </li>
+                    </ul>
+                  </div>
+                </swx-me-presence-popup>
+
+                <div id="expandMeProfileLabel" class="offScreen">
+                  <span data-bind="text: displayNameUnescaped"
+                    >Display Name</span
+                  >
+                  <span
+                    data-bind="l10n: {'key': 'accessibility_me_expandProfile'}"
+                    >Expand profile</span
+                  >
+                </div>
+                <div class="Me-skyContainer" data-bind="click: toggleMeSize">
+                  <div class="Me-sky"></div>
+                  <swx-avatar
+                    class="Me-avatar"
+                    params="size: 40, avatar: avatarUrl, status: avatarStatusClassName, displayName: displayNameUnescaped"
+                    ><div
+                      role="button"
+                      class="Avatar Avatar--size40 Avatar--presence Avatar--unknown"
+                      data-bind="css: containerClass, attr: {tabindex: tabindex}"
+                      tabindex=""
+                      id="avatarPresenceIndicator"
+                    >
+                      <img
+                        class="Avatar-image"
+                        data-bind="fallBackOnDefaultAvatarOnError: avatarUrl, isPstn: isPstn, isGroupAvatar: isGroupAvatar, displayName: displayName, useDefaultAvatar: useDefaultAvatar"
+                        alt=""
+                        aria-hidden="true"
+                        role="presentation"
+                        src="https://avatar.skype.com/v1/avatars/self/public?size=m"
+                        style="display: block"
+                      />
+                    </div>
+                  </swx-avatar>
+                  <div class="Me-info">
+                    <span class="Me-displayNameContainer">
+                      <p
+                        aria-labelledby="expandMeProfileLabel"
+                        class="Me-displayName fontSize-h3 strong"
+                        role="button"
+                        data-bind="click: toggleMeSize, event: {keypress: toggleMeSize}, text: displayNameUnescaped, attr: {tabindex: linkTabIndex}"
+                        tabindex="0"
+                      >
+                        Display Name
+                      </p>
+                      <!-- ko if:displayBalance() --><!-- /ko -->
+                    </span>
+                    <p
+                      class="Me-moodMessage"
+                      role="button"
+                      data-bind="html: activityMessage, attr: {'title': activityMessageTitle, 'aria-label': activityMessageTitle}, event: {keypress: toggleMeSize, click: toggleMeSize}, attr: {tabindex: linkTabIndex}"
+                      tabindex="0"
+                    >
+                      Getting status...
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- ko if: isExpanded ()--><!-- /ko -->
+            </div>
+          </swx-me-area>
+        </div>
+      </div>
+      <div class="shell main" id="chatServiceContainer">
+        <aside class="sideContainer">
+          <div
+            class="timelineComponentContainer swx"
+            id="timelineComponent"
+            dir="ltr"
+          >
+            <div
+              class="side themeWhite slideLeftToRight inactive"
+              data-bind='event:{mouseover: expand,mouseout: collapse},css:{active: isExpanded(),inactive: !isExpanded(),showTooltips: showTooltips(),slideIn: addSlideInClass(),slideOut: addSlideOutClass()},transitionEnd: {callback: slideTransitionEnded, moreElementsToWatch: ["aside.sideContainer"]}'
+            >
+              <swx-sidebar
+                data-bind="event: { mousemove: handleUserAction, click: handleUserAction, mousewheel: handleUserAction, keydown: handleUserAction }"
+                ><!-- ko if: isSidebarInAlternativeLayout  --><!-- /ko -->
+
+                <!-- ko ifnot: isSidebarInAlternativeLayout  -->
+                <div
+                  class="search beforeMenuItems"
+                  data-bind="css: {active: isSearchActive}"
+                >
+                  <swx-search-input
+                    ><div
+                      class="input"
+                      data-bind="css: { active: hasFocus() }, click: setFocus"
+                    >
+                      <div
+                        class="icon"
+                        data-bind="css: { showSpinner: showSpinner }"
+                      >
+                        <div class="iconfont search"></div>
+                        <swx-loading-animation class="spinner small blue"
+                          ><div class="circle one">
+                            <div class="rotate">
+                              <div class="position">
+                                <div class="scale">
+                                  <div class="shape"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="circle two">
+                            <div class="rotate">
+                              <div class="position">
+                                <div class="scale">
+                                  <div class="shape"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="circle three">
+                            <div class="rotate">
+                              <div class="position">
+                                <div class="scale">
+                                  <div class="shape"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="circle four">
+                            <div class="rotate">
+                              <div class="position">
+                                <div class="scale">
+                                  <div class="shape"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </swx-loading-animation>
+                      </div>
+                      <input
+                        role="search"
+                        type="text"
+                        data-bind="visible: isEnabled, hasFocus: hasFocus, textInput: query, event: { keydown: onKeyDown }, enterKey: activateDirectorySearch, l10n_attr: { 'placeholder': 'input_placeholder_searchSkype'}, attr: { 'aria-label': inputAriaLabel}"
+                        maxlength="250"
+                        value=""
+                        name="query"
+                        class="inputField fontSize-h4"
+                        placeholder="Search"
+                        aria-label="Search conversation. Type contact or group name."
+                        style="display: none"
+                      />
+                      <button
+                        data-bind="visible: query().length, click: resetQuery, l10n_attr: { 'aria-label': 'clear_search_input_label'}"
+                        type="button"
+                        class="btn primary circle small transparent searchReset"
+                        aria-label="Clear search"
+                        style="display: none"
+                      >
+                        <span class="iconfont cross"></span>
+                      </button>
+                    </div>
+                    <!-- ko if: showMoreResultsAvailableMessage() --><!-- /ko-->
+                  </swx-search-input>
+                  <div class="splitter"></div>
+                  <swx-search-results
+                    class="ltroverride hyperscroll hyperscrollV"
+                    ><div
+                      class="results scrollable scrollViewport scrollViewportV fixSmall hide"
+                      data-bind="css: cssClass, event: { scroll: onScroll }"
+                      tabindex="-1"
+                    >
+                      <div class="scrollViewport-inner">
+                        <div
+                          class="offScreen"
+                          role="tooltip"
+                          aria-live="polite"
+                          data-bind="text: selectedItem"
+                        ></div>
+                        <swx-messages-search
+                          ><!-- ko if: searchResults().length > 0 --><!-- /ko -->
+                        </swx-messages-search>
+                        <swx-people-search
+                          ><ul
+                            data-bind="css: listClass, keyboardNavigation: { itemSelector: '.searchItem', persistSelection: false }, attr: {'role': listRole, 'aria-label': listTitle }"
+                            class="people"
+                            tabindex="0"
+                            role="group"
+                            aria-label="People"
+                          >
+                            <!-- ko if: showListTitle -->
+                            <div class="separator">
+                              <p class="strong" data-bind="text: listTitle">
+                                People
+                              </p>
+                            </div>
+                            <!-- /ko -->
+
+                            <!-- ko if: showEmptyListText --><!-- /ko -->
+
+                            <!-- ko if: listHasContacts --><!-- /ko -->
+                          </ul>
+                        </swx-people-search>
+                        <swx-group-search
+                          ><!-- ko if: searchResults().length > 0 --><!-- /ko -->
+                        </swx-group-search>
+                        <!-- ko if: showSpinner --><!-- /ko -->
+                        <!-- ko if: showDirectoryButton -->
+                        <div class="grid container">
+                          <div class="button row">
+                            <button
+                              data-bind="click: activateDirectorySearch, l10n_attr: { 'aria-label': 'input_searchSkypeDirectory_ariaLabel', 'data-title': 'input_searchSkypeDirectory_ariaLabel' }"
+                              class="btn primary searchDirectory list-selectable"
+                              type="button"
+                              aria-label="Search Skype Directory"
+                              data-title="Search Skype Directory"
+                            >
+                              <span
+                                ><!-- ko text: directoryButtonText -->Search
+                                Skype Directory<!-- /ko --></span
+                              >
+                            </button>
+                          </div>
+                        </div>
+                        <!-- /ko -->
+                        <swx-directory-search
+                          ><ul
+                            data-bind="css: listClass, keyboardNavigation: { itemSelector: '.searchItem', persistSelection: false }, attr: {'role': listRole, 'aria-label': listTitle }"
+                            class="directory"
+                            tabindex="0"
+                            role="group"
+                            aria-label="Directory"
+                          >
+                            <!-- ko if: showListTitle --><!-- /ko -->
+
+                            <!-- ko if: showEmptyListText --><!-- /ko -->
+
+                            <!-- ko if: listHasContacts --><!-- /ko -->
+                          </ul>
+                        </swx-directory-search>
+                      </div>
+                    </div>
+                    <div class="rail railV"><div class="slider"></div></div
+                  ></swx-search-results>
+                </div>
+                <div
+                  class="navigation afterSearch"
+                  data-bind="css: {hide: isSearchActive}"
+                >
+                  <div
+                    role="menubar"
+                    data-bind="foreach: items, keyboardNavigation: { itemSelector: 'a' }, css: { navigationMenuIcons: isNavigationMenuIconsEnabled }"
+                    tabindex="0"
+                    class="navigationMenuIcons"
+                  >
+                    <swx-menu-item params="viewModel: $data" role="presentation"
+                      ><a
+                        href="#"
+                        role="menuitem"
+                        class="navItem icon"
+                        data-bind="css: {active: isActive, icon: isNavigationMenuIconsEnabled}, visible: !isDisabled(), event: {click: onClick, keydown: onKeyDown}, attr: {'aria-label': getTitleText(), id: id }"
+                        aria-label="Contacts"
+                        id="menuItem-contacts"
+                        style="display: none"
+                      >
+                        <span class="icon">
+                          <span
+                            class="iconfont skypeAddressBook"
+                            data-bind="css: icon, attr: { title: getTitleText() }"
+                            title="Contacts"
+                          ></span>
+                        </span>
+                        <span class="text">
+                          <h4 data-bind="text: text">Contacts</h4>
+                        </span>
+                      </a>
+                    </swx-menu-item>
+
+                    <swx-menu-item params="viewModel: $data" role="presentation"
+                      ><a
+                        href="#"
+                        role="menuitem"
+                        class="navItem icon"
+                        data-bind="css: {active: isActive, icon: isNavigationMenuIconsEnabled}, visible: !isDisabled(), event: {click: onClick, keydown: onKeyDown}, attr: {'aria-label': getTitleText(), id: id }"
+                        aria-label="Call phones"
+                        id="menuItem-dialpad"
+                        style="display: none"
+                      >
+                        <span class="icon">
+                          <span
+                            class="iconfont dialpad"
+                            data-bind="css: icon, attr: { title: getTitleText() }"
+                            title="Call phones"
+                          ></span>
+                        </span>
+                        <span class="text">
+                          <h4 data-bind="text: text">Call phones</h4>
+                        </span>
+                      </a>
+                    </swx-menu-item>
+
+                    <swx-menu-item params="viewModel: $data" role="presentation"
+                      ><a
+                        href="#"
+                        role="menuitem"
+                        class="navItem icon"
+                        data-bind="css: {active: isActive, icon: isNavigationMenuIconsEnabled}, visible: !isDisabled(), event: {click: onClick, keydown: onKeyDown}, attr: {'aria-label': getTitleText(), id: id }"
+                        aria-label="New Chat"
+                        id="menuItem-newChat"
+                        style="display: none"
+                      >
+                        <span class="icon">
+                          <span
+                            class="iconfont add"
+                            data-bind="css: icon, attr: { title: getTitleText() }"
+                            title="New Chat"
+                          ></span>
+                        </span>
+                        <span class="text">
+                          <h4 data-bind="text: text">New Chat</h4>
+                        </span>
+                      </a>
+                    </swx-menu-item>
+
+                    <swx-menu-item params="viewModel: $data" role="presentation"
+                      ><a
+                        href="#"
+                        role="menuitem"
+                        class="navItem icon"
+                        data-bind="css: {active: isActive, icon: isNavigationMenuIconsEnabled}, visible: !isDisabled(), event: {click: onClick, keydown: onKeyDown}, attr: {'aria-label': getTitleText(), id: id }"
+                        aria-label="Settings"
+                        id="menuItem-userSettings"
+                        style="display: none"
+                      >
+                        <span class="icon">
+                          <span
+                            class="iconfont settings"
+                            data-bind="css: icon, attr: { title: getTitleText() }"
+                            title="Settings"
+                          ></span>
+                        </span>
+                        <span class="text">
+                          <h4 data-bind="text: text">Settings</h4>
+                        </span>
+                      </a>
+                    </swx-menu-item>
+
+                    <swx-menu-item params="viewModel: $data" role="presentation"
+                      ><a
+                        href="#"
+                        role="menuitem"
+                        class="navItem icon"
+                        data-bind="css: {active: isActive, icon: isNavigationMenuIconsEnabled}, visible: !isDisabled(), event: {click: onClick, keydown: onKeyDown}, attr: {'aria-label': getTitleText(), id: id }"
+                        aria-label="Discover Bots"
+                        id="menuItem-discoverAgents"
+                        style="display: none"
+                      >
+                        <span class="icon">
+                          <span
+                            class="iconfont botAdd"
+                            data-bind="css: icon, attr: { title: getTitleText() }"
+                            title="Discover Bots"
+                          ></span>
+                        </span>
+                        <span class="text">
+                          <h4 data-bind="text: text">Discover Bots</h4>
+                        </span>
+                      </a>
+                    </swx-menu-item>
+                  </div>
+                  <!-- ko if: isNotificationsCenterEnabled --><!-- /ko -->
+                </div>
+                <!-- /ko -->
+
+                <swx-recents
+                  params="buttonsDisabled: itemsDisabled"
+                  class="timeline"
+                  data-bind="css: {hide: hideRecents}"
+                  ><div
+                    data-bind="css:{ hide:hasCurrentCall()==false }"
+                    class="hide"
+                  >
+                    <div class="current">
+                      <div class="separator">
+                        <p
+                          class="strong"
+                          data-bind="l10n: { key: 'label_text_currentCallHeading'}"
+                        >
+                          Current call
+                        </p>
+                      </div>
+                    </div>
+                    <!-- ko foreach: currentCalls --><!--/ko -->
+                  </div>
+
+                  <div
+                    class="scrollingWrapper ltroverride hyperscroll hyperscrollV"
+                    data-bind="keyboardNavigation: { itemSelector: 'a' }"
+                    tabindex="0"
+                  >
+                    <div
+                      class="history scrollable scrollViewport scrollViewportV fixSmall"
+                      data-bind="event: { scroll: onScroll }"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="recents scrollViewport-inner"
+                        role="menu"
+                        data-bind="template: { name: 'recent-template', foreach: recentConversations, as: 'recent' }"
+                      ></div>
+
+                      <!-- ko if: recentConversations().length == 0 -->
+                      <div role="listitem" class="RecentsMessage">
+                        <p
+                          class="RecentsMessage-emptyConversation"
+                          data-bind="l10n: { key:  'label_text_conversationsLoadNone'}"
+                        >
+                          No recent conversations
+                        </p>
+                      </div>
+                      <!-- /ko -->
+                    </div>
+                    <div class="rail railV"><div class="slider"></div></div>
+                  </div>
+
+                  <!-- ko if: hasNotificationsToggle || hasButtonFullSize || hasBetaLabel || hasFeedbackIcon --><!-- /ko -->
+
+                  <script type="text/html" id="recent-template">
+                    <!-- ko if: $parent.showSeparatorIcon($index()) -->
+                    <div
+                      role="heading"
+                      class="splitter"
+                      data-bind="l10n_attr: {'aria-label': $parent.separatorText($index())}"
+                    >
+                      <span
+                        class="icon iconfont favourite"
+                        data-bind="css:$parent.separatorIconClass($index())"
+                      ></span>
+                    </div>
+                    <!-- /ko -->
+
+                    <!-- ko if: $parent.showSeparator($index())-->
+                    <div role="heading" class="separator">
+                      <p
+                        data-bind="text: recent.separator(), attr: {'aria-label': recent.separator()}"
+                        class="strong"
+                      ></p>
+                    </div>
+                    <!-- /ko -->
+
+                    <swx-recent-item
+                      role="group"
+                      params="model: recent"
+                      class="list-selectable"
+                    ></swx-recent-item>
+                  </script>
+                </swx-recents>
+                <!-- ko if: isUserSettingsEnabled() && !isNavigationMenuIconsEnabled --><!-- /ko -->
+
+                <!-- ko if: isNotificationsCenterEnabled && isNotificationsCenterActive() --><!-- /ko -->
+              </swx-sidebar>
+            </div>
+          </div>
+        </aside>
+        <div class="chatContainer">
+          <div class="chatComponentContainer swx" id="chatComponent" dir="ltr">
+            <div id="swxContent1" class="swxContent">
+              <swx-notification-box
+                ><!-- ko if: isVisible --><!-- /ko -->
+              </swx-notification-box>
+              <swx-navigation
+                ><div
+                  class="fragmentsContainer hideContent"
+                  data-bind="foreach: fragments, css: { showContent: expandContent, hideContent: shrinkContent }, event: { mousemove: handleUserAction, click: handleUserAction, mousewheel: handleUserAction, keydown: handleUserAction }"
+                ></div>
+                <swx-narrator
+                  ><div aria-live="assertive" role="log" class="offScreen">
+                    <!-- ko foreach: narrationLog --><!-- /ko -->
+                  </div>
+                </swx-narrator>
+              </swx-navigation>
+
+              <!-- content overlay used for masking chat area when sidebar is expanded -->
+              <span
+                class="swxContentOverlay"
+                data-bind="css: { active: showOverlay }, click: hideOverlay"
+              ></span>
+
+              <!-- named templates for various message types contents -->
+              <script type="text/html" id="pictureMessageContentTemplate">
+                <p class="PictureSharing">
+                  <a
+                    class="thumbnailHolder"
+                    data-bind="click: open, attr: {href: pictureUrl}, l10n_attr: {'aria-label': 'media_picturesharing_label', 'title': 'media_picturesharing_label'}"
+                    target="_blank"
+                    tabindex="-1"
+                  >
+                    <span class="pictureIcon">
+                      <span class="iconfont picture"></span>
+                    </span>
+
+                    <!-- ko if: hasFailed -->
+                    <span class="failedIcon">
+                      <span class="iconfont errorSad"></span>
+                    </span>
+                    <!-- /ko -->
+
+                    <!-- ko if: isPending -->
+                    <span class="progressIndicatorContainer">
+                      <span
+                        class="progressIndicator"
+                        data-bind="style: {backgroundImage: progressIndicatorBG}"
+                      ></span>
+                      <span class="fill"></span>
+                    </span>
+                    <!-- /ko -->
+
+                    <!-- ko if: thumbnailUrl -->
+                    <span
+                      class="thumbnail"
+                      data-bind="style: { backgroundImage: 'url(\'' + thumbnailUrl() + '\')' }"
+                    ></span>
+                    <!-- /ko -->
+
+                    <!-- ko ifnot: thumbnailUrl -->
+                    <span class="thumbnail" style="display:none"></span>
+                    <!-- /ko -->
+                  </a>
+                  <span class="offScreen" data-bind="text: content"></span>
+                </p>
+                <!-- ko if: reactionsVM.enabled && reactionsVM.reactionsCount() > 0 -->
+                <div class="reactionsBar">
+                  <span
+                    data-bind="foreach: {data: reactionsVM.reactions(), as: 'reaction'}"
+                  >
+                    <!-- ko if: reaction.key !== $parent.reactionsVM.dummyReaction -->
+                    <span class="reactionItem">
+                      <span
+                        class="emoticon"
+                        data-bind="
+                    attr: {
+                        title: $parent.reactionsVM.getUserListNames(reaction.key)
+                    },
+                    style: {
+                        'background-image' : $parent.reactionsVM.getEmoticonUrl(reaction.key)
+                    },
+                    css: {highDpi: $parent.reactionsVM.showHighDpiClass}"
+                      >
+                      </span>
+                      <span
+                        class="counter smaller"
+                        data-bind="text: reaction.users.length"
+                      ></span>
+                    </span>
+                    <!-- /ko -->
+                  </span>
+                </div>
+                <!-- /ko -->
+              </script>
+
+              <script type="text/html" id="contactInfoMessageContentTemplate">
+                <span class="offScreen" data-bind="text: content"></span>
+                <div class="contactsList" data-bind="foreach: contacts">
+                  <div class="contact clickable">
+                    <!--ko ifnot: ($parent.isMePersonContactMessage(name()) || $parent.isPSTNContactMessage(name())) -->
+                    <a
+                      class="avatarLink"
+                      data-bind="click: $parent.openConversationWithUser.bind(this, name()), attr: {title: titleKey}"
+                      role="button"
+                    >
+                      <swx-avatar
+                        params="avatar: avatar, isFullSize: true, displayName: fullName"
+                      ></swx-avatar>
+                    </a>
+                    <!-- /ko -->
+                    <!--ko if: ($parent.isMePersonContactMessage(name()) && !$parent.isPSTNContactMessage(name())) -->
+                    <swx-avatar
+                      params="avatar: avatar, isFullSize: true, displayName: fullName"
+                    ></swx-avatar>
+                    <!-- /ko -->
+                    <!--ko if: (!$parent.isMePersonContactMessage(name()) && $parent.isPSTNContactMessage(name())) -->
+                    <span class="iconfont callStart pstn"></span>
+                    <!-- /ko -->
+                    <div class="info">
+                      <!--ko if: $parent.contactHasFullName(name()) -->
+                      <div
+                        class="fullName"
+                        data-bind="css: {pstn: $parent.isPSTNContactMessage(name())}"
+                      >
+                        <span
+                          class="strong fontSize-p"
+                          data-bind="text: fullName"
+                        ></span>
+                      </div>
+                      <!-- /ko -->
+                      <!--ko ifnot: $parent.isPSTNContactMessage(name()) -->
+                      <div class="name">
+                        <span class="fontSize-p" data-bind="text: name"></span>
+                      </div>
+                      <!--ko ifnot: $parent.isMePersonContactMessage(name()) -->
+                      <div class="action">
+                        <a
+                          role="button"
+                          class="actionLink clickable"
+                          data-bind="click: $parent.openConversationWithUser.bind(this, name()), l10n: {key: actionKey}"
+                          tabindex="-2"
+                        >
+                        </a>
+                      </div>
+                      <!-- /ko -->
+                      <!-- /ko -->
+                    </div>
+                  </div>
+                </div>
+              </script>
+
+              <script type="text/html" id="fileTransferMessageContentTemplate">
+                <p
+                  data-bind="css:typeClasses"
+                  data-bind="css:{aborted:isAborted}"
+                  class="FileTransfer"
+                >
+                  <span
+                    class="icon iconfont file"
+                    data-bind="css:iconClasses"
+                  ></span>
+
+                  <span class="filename" data-bind="text:fileName"></span>
+
+                  <!-- ko if: isAborted -->
+                  <span
+                    class="aborted iconfont cancel"
+                    data-bind="l10n_attr: {'title': 'file_transfer_upload_canceled' }"
+                  ></span>
+                  <span
+                    class="errorMessage"
+                    data-bind="l10n: {'key': 'file_transfer_upload_canceled' }, l10n_attr: {'title':'file_transfer_upload_canceled'}, l10n_attr:{'aria-label':'file_transfer_upload_canceled'}"
+                  ></span>
+                  <span class="filesize" data-bind="text:fileSize"></span>
+                  <!-- /ko -->
+
+                  <!-- ko ifnot: isAborted -->
+                  <span class="filesize" data-bind="text:fileSize"></span>
+                  <swx-filetransfer-activity-actions
+                    params="message:$data, onabort:abortUploading"
+                  ></swx-filetransfer-activity-actions>
+                  <!-- /ko -->
+                </p>
+
+                <!-- ko if: reactionsVM.enabled && reactionsVM.reactionsCount() > 0 -->
+                <div class="reactionsBar">
+                  <span
+                    data-bind="foreach: {data: reactionsVM.reactions(), as: 'reaction'}"
+                  >
+                    <!-- ko if: reaction.key !== $parent.reactionsVM.dummyReaction -->
+                    <span class="reactionItem">
+                      <span
+                        class="emoticon"
+                        data-bind="
+                    attr: {
+                        title: $parent.reactionsVM.getUserListNames(reaction.key)
+                    },
+                    style: {
+                        'background-image' : $parent.reactionsVM.getEmoticonUrl(reaction.key)
+                    },
+                    css: {highDpi: $parent.reactionsVM.showHighDpiClass}"
+                      >
+                      </span>
+                      <span
+                        class="counter smaller"
+                        data-bind="text: reaction.users.length"
+                      ></span>
+                    </span>
+                    <!-- /ko -->
+                  </span>
+                </div>
+                <!-- /ko -->
+              </script>
+
+              <script type="text/html" id="videoMessageContentTemplate">
+                <div class="video-message">
+                  <div class="media-holder" data-bind="css: orientationClass">
+                    <div class="media-content">
+                      <div class="videoIcon">
+                        <span class="iconfont videomail"></span>
+                      </div>
+
+                      <!-- ko if: hasFailed -->
+                      <span class="failedIcon">
+                        <span class="iconfont errorSad"></span>
+                      </span>
+                      <!-- /ko -->
+
+                      <!-- ko if: isLoaded() & !isPlaying() -->
+                      <div
+                        class="thumbnail"
+                        data-bind="click: play, style: { backgroundImage: 'url(\'' + thumbnailUrl + '\')' }"
+                      ></div>
+                      <a
+                        href="#"
+                        class="iconfont play playButton"
+                        data-bind="click: play, l10n_attr: { 'aria-label': 'media_clicktoplay' }"
+                        role="button"
+                        tabindex="-1"
+                      ></a>
+                      <!-- /ko -->
+
+                      <!-- ko if: isPlaying -->
+                      <swx-video-player
+                        params="media: mediaUrl, thumbnail: thumbnailUrl, autoplay: true, displayCurrentTime: true, displayTotalTime: true, messageId: $parent.clientmessageid, conversationId: $parent.conversationId"
+                      ></swx-video-player>
+                      <!-- /ko -->
+                    </div>
+                  </div>
+
+                  <!-- ko if: hasExpired -->
+                  <p
+                    class="errorMessage"
+                    data-bind="l10n: { key: 'media_videomessage_expired' }"
+                  ></p>
+                  <!-- /ko -->
+                </div>
+
+                <!-- ko if: reactionsVM.enabled && reactionsVM.reactionsCount() > 0 -->
+                <div class="reactionsBar">
+                  <span
+                    data-bind="foreach: {data: reactionsVM.reactions(), as: 'reaction'}"
+                  >
+                    <!-- ko if: reaction.key !== $parent.reactionsVM.dummyReaction -->
+                    <span class="reactionItem">
+                      <span
+                        class="emoticon"
+                        data-bind="
+                    attr: {
+                        title: $parent.reactionsVM.getUserListNames(reaction.key)
+                    },
+                    style: {
+                        'background-image' : $parent.reactionsVM.getEmoticonUrl(reaction.key)
+                    },
+                    css: {highDpi: $parent.reactionsVM.showHighDpiClass}"
+                      >
+                      </span>
+                      <span
+                        class="counter smaller"
+                        data-bind="text: reaction.users.length"
+                      ></span>
+                    </span>
+                    <!-- /ko -->
+                  </span>
+                </div>
+                <!-- /ko -->
+              </script>
+
+              <script type="text/html" id="audioMessageContentTemplate">
+                <div class="audio-message">
+                  <!-- ko ifnot: hasExpired -->
+                  <div class="media-holder">
+                    <div class="media-content">
+                      <div class="audioIcon">
+                        <span class="iconfont audiomail"></span>
+                      </div>
+
+                      <!-- ko if: hasFailed -->
+                      <span class="failedIcon">
+                        <span class="iconfont errorSad"></span>
+                      </span>
+                      <!-- /ko -->
+                      <!-- ko if: isLoaded() & !isPlaying() -->
+                      <a
+                        href="#"
+                        class="iconfont play playButton"
+                        data-bind="click: play, l10n_attr: { 'aria-label': 'media_clicktoplay' }"
+                        role="button"
+                        tabindex="-1"
+                      ></a>
+                      <span
+                        class="voiceMessage"
+                        data-bind="l10n: { key: 'media_voice_message' }"
+                      ></span>
+
+                      <!-- /ko -->
+                      <!-- ko if: isPlaying -->
+                      <swx-audio-player
+                        params="media: mediaUrl, autoplay: true, messageId: $parent.messageId, conversationId: $parent.conversationId"
+                      ></swx-audio-player>
+                      <!-- /ko -->
+                    </div>
+                  </div>
+                  <!-- /ko -->
+
+                  <!-- ko if: hasExpired -->
+                  <p
+                    data-bind="l10n: { key: 'media_audiomessage_expired' }"
+                  ></p>
+                  <!-- /ko -->
+                </div>
+
+                <!-- ko if: reactionsVM.enabled && reactionsVM.reactionsCount() > 0 -->
+                <div class="reactionsBar">
+                  <span
+                    data-bind="foreach: {data: reactionsVM.reactions(), as: 'reaction'}"
+                  >
+                    <!-- ko if: reaction.key !== $parent.reactionsVM.dummyReaction -->
+                    <span class="reactionItem">
+                      <span
+                        class="emoticon"
+                        data-bind="
+                    attr: {
+                        title: $parent.reactionsVM.getUserListNames(reaction.key)
+                    },
+                    style: {
+                        'background-image' : $parent.reactionsVM.getEmoticonUrl(reaction.key)
+                    },
+                    css: {highDpi: $parent.reactionsVM.showHighDpiClass}"
+                      >
+                      </span>
+                      <span
+                        class="counter smaller"
+                        data-bind="text: reaction.users.length"
+                      ></span>
+                    </span>
+                    <!-- /ko -->
+                  </span>
+                </div>
+                <!-- /ko -->
+              </script>
+
+              <script type="text/html" id="mojiMessageContentTemplate">
+                <p data-bind="css: typeClasses">
+                  <span class="mojiContent">
+                    <span class="mojiplaceholder"></span>
+                    <img
+                      class="mojithumbnail"
+                      data-bind="attr: { src: mojiThumbnailUrl}"
+                      alt=""
+                      role="presentation"
+                      aria-hidden="true"
+                    />
+                    <video
+                      class="moji"
+                      data-bind="css: {hide: true}, attr: { src: mojiUrl }"
+                    ></video>
+                    <span
+                      class="mojimask"
+                      data-bind="click: stopMojiPlay"
+                    ></span>
+                    <a
+                      href="#"
+                      class="actionButtons iconfont play mojiplay clickable"
+                      data-bind="css: {hide: true}, click: playMoji,
+                          l10n_attr: { 'aria-label': 'pes_moji_playbutton_label' }"
+                      role="button"
+                      tabindex="-1"
+                    ></a>
+                  </span>
+                  <span class="mojitext" data-bind="visible: false()">
+                    <span
+                      class="mojiTitle"
+                      data-bind="css: {hide: !mojiTitle() && mojiTitle() === ''}, text: mojiTitle"
+                    ></span>
+                    <span class="mojiLink">
+                      <a
+                        data-bind="css: {hide: !mojiLinkName() && mojiLinkName() === ''}, text: mojiLinkName,
+                              attr: {href: mojiLinkUrl}"
+                        target="_blank"
+                        tabindex="-1"
+                      ></a>
+                    </span>
+                    <span
+                      class="mojiCopyright"
+                      data-bind="css: {hide: !mojiCopyright() || mojiCopyright() === ''}, text: mojiCopyright"
+                    ></span>
+                  </span>
+                  <span class="moji-error-state ">
+                    <span class="icon iconfont flikDeletedStroke"></span>
+                    <span class="text" data-bind="text: mojiErrorText"></span>
+                  </span>
+                </p>
+
+                <!-- ko if: reactionsVM.enabled && reactionsVM.reactionsCount() > 0 -->
+                <div class="reactionsBar">
+                  <span
+                    data-bind="foreach: {data: reactionsVM.reactions(), as: 'reaction'}"
+                  >
+                    <!-- ko if: reaction.key !== $parent.reactionsVM.dummyReaction -->
+                    <span class="reactionItem">
+                      <span
+                        class="emoticon"
+                        data-bind="
+                    attr: {
+                        title: $parent.reactionsVM.getUserListNames(reaction.key)
+                    },
+                    style: {
+                        'background-image' : $parent.reactionsVM.getEmoticonUrl(reaction.key)
+                    },
+                    css: {highDpi: $parent.reactionsVM.showHighDpiClass}"
+                      >
+                      </span>
+                      <span
+                        class="counter smaller"
+                        data-bind="text: reaction.users.length"
+                      ></span>
+                    </span>
+                    <!-- /ko -->
+                  </span>
+                </div>
+                <!-- /ko -->
+              </script>
+
+              <script type="text/html" id="textMessageContentTemplate">
+                <!-- ko if: isCopySelectionAsQuoteEnabled -->
+                <p
+                  data-bind="html: content, css: typeClasses, visible: !translationItem.visible(), click: $parent.messageClicked.bind(this), event: {copy: onCopy}"
+                ></p>
+                <!-- /ko -->
+
+                <!-- ko if: !isCopySelectionAsQuoteEnabled -->
+                <p
+                  data-bind="html: content, css: typeClasses, visible: !translationItem.visible(), click: $parent.messageClicked.bind(this)"
+                ></p>
+                <!-- /ko -->
+
+                <!-- ko if: translationItem.isEnabled -->
+                <p
+                  data-bind="html: translationItem.translationText, visible: translationItem.visible()"
+                ></p>
+                <p>
+                  <a
+                    href="#"
+                    role="button"
+                    data-bind="text: translationItem.toggleText, attr: {title: translationItem.toggleText, 'aria-label': translationItem.toggleText}, click: translationItem.toggle"
+                  ></a>
+                </p>
+                <!-- /ko -->
+
+                <!-- ko if: reactionsVM.enabled && reactionsVM.reactionsCount() > 0 -->
+                <div class="reactionsBar">
+                  <span
+                    data-bind="foreach: {data: reactionsVM.reactions(), as: 'reaction'}"
+                  >
+                    <!-- ko if: reaction.key !== $parent.reactionsVM.dummyReaction -->
+                    <span class="reactionItem">
+                      <span
+                        class="emoticon"
+                        data-bind="
+                    attr: {
+                        title: $parent.reactionsVM.getUserListNames(reaction.key)
+                    },
+                    style: {
+                        'background-image' : $parent.reactionsVM.getEmoticonUrl(reaction.key)
+                    },
+                    css: {highDpi: $parent.reactionsVM.showHighDpiClass}"
+                      >
+                      </span>
+                      <span
+                        class="counter smaller"
+                        data-bind="text: reaction.users.length"
+                      ></span>
+                    </span>
+                    <!-- /ko -->
+                  </span>
+                </div>
+                <!-- /ko -->
+              </script>
+
+              <script type="text/html" id="callingMessageContentTemplate">
+                <p data-bind="html: content, css: typeClasses"></p>
+                <p
+                  class="liveSessionDuration small"
+                  data-bind="html: liveSessionDuration"
+                ></p>
+              </script>
+
+              <script type="text/html" id="ngcUpgradeMessageContentTemplate">
+                <p data-bind="html: content, css: typeClasses"></p>
+              </script>
+
+              <script type="text/html" id="pluginFreeMessageContentTemplate">
+                <p data-bind="html: content, css: typeClasses"></p>
+              </script>
+
+              <script type="text/html" id="pstnMessageContentTemplate">
+                <p data-bind="css: typeClasses">
+                  <span
+                    data-bind="html: content, click: addCreditTelemetry"
+                  ></span
+                  ><a
+                    data-bind="click: navigateToDialPad, visible: linkVisible"
+                    class="clickable"
+                  >
+                    <span data-bind="html: linkContent"></span
+                  ></a>
+                </p>
+              </script>
+
+              <script
+                type="text/html"
+                id="contactRequestIncomingMessageContentTemplate"
+              >
+                <p data-bind="css: typeClasses">
+                  <swx-avatar
+                    params="avatar: author.avatar, isAgent: author.isAgent, displayName: author.displayName, isPstn: author.isPstn, size: 65"
+                  ></swx-avatar>
+                </p>
+                <div
+                  class="contactRequestMessage contactRequestIncomingMessage"
+                >
+                  <p
+                    data-bind="l10n: { key: 'message_text_contactRequestIncomingMessage', params: { displayName: author.displayName } }"
+                  ></p>
+
+                  <p data-bind="html: greeting"></p>
+
+                  <p data-bind="html: setTimestamp" class="timestamp"></p>
+                </div>
+                <div class="triple buttonRow">
+                  <div class="column">
+                    <button
+                      type="button"
+                      class="btn primary clickable contactRequestAccept"
+                      data-bind="click: acceptContactRequest, disable: actionInProgress, css: { 'in-progress': actionInProgress }, focusHandler: { priority: 1, callback: focusHandlerCallback }"
+                      tabindex="-1"
+                    >
+                      <span
+                        data-bind="l10n: { key: 'message_text_contactRequestAcceptAction' }"
+                      ></span>
+                    </button>
+                  </div>
+                  <div class="column">
+                    <button
+                      type="button"
+                      class="btn secondary clickable contactRequestDecline"
+                      data-bind="click: declineContactRequest, disable: actionInProgress, css: { 'in-progress': actionInProgress }"
+                      tabindex="-1"
+                    >
+                      <span
+                        data-bind="l10n: { key: 'message_text_contactRequestDeclineAction' }"
+                      ></span>
+                    </button>
+                  </div>
+                  <div class="column">
+                    <button
+                      type="button"
+                      class="btn secondary clickable contactRequestBlock"
+                      data-bind="click: blockContactRequest, disable: actionInProgress, css: { 'in-progress': actionInProgress }"
+                      tabindex="-1"
+                    >
+                      <span
+                        data-bind="l10n: { key: 'action_button_block' }"
+                      ></span>
+                    </button>
+                  </div>
+                </div>
+              </script>
+
+              <script
+                type="text/html"
+                id="contactRequestIncomingInviteFreeMessageContentTemplate"
+              >
+                <p
+                  class="contactRequestResendMessage"
+                  data-bind="css: typeClasses"
+                >
+                  <span data-bind="html: content"></span>
+                  <a
+                    data-bind="l10n: { key: 'invite_free_block_person' }, click: blockContactRequest"
+                    class="clickable"
+                    tabindex="-1"
+                  ></a>
+                </p>
+              </script>
+
+              <script
+                type="text/html"
+                id="contactRequestOutgoingMessageContentTemplate"
+              >
+                <!-- ko if: !isBusinessContactMgmtEnabled -->
+                <p data-bind="css: typeClasses">
+                  <swx-avatar
+                    params="avatar: author.avatar, isAgent: author.isAgent, displayName: author.displayName, isPstn: author.isPstn, size: 65"
+                  ></swx-avatar>
+                </p>
+                <div
+                  class="contactRequestMessage contactRequestOutgoingMessage"
+                >
+                  <p
+                    data-bind="l10n: { key: 'message_text_contactRequestOutgoingMessage', params: { displayName: author.displayName } }"
+                  ></p>
+                </div>
+                <div class="buttonRow">
+                  <button
+                    type="button"
+                    class="btn primary clickable contactRequestSend"
+                    data-swx-testId="sendContactRequest"
+                    data-bind="click: sendContactRequest, disable: actionInProgress, css: { 'in-progress': actionInProgress }, focusHandler: { priority: focusImportance, callback: focusHandlerCallback }"
+                    tabindex="-1"
+                  >
+                    <span
+                      data-bind="l10n: { key: 'message_text_contactRequestSendAction' }"
+                    ></span>
+                  </button>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: isBusinessContactMgmtEnabled -->
+                <div
+                  class="contactRequestMessage contactRequestOutgoingMessage"
+                >
+                  <p
+                    data-bind="l10n: { key: 'message_text_contactRequestOutgoingMessage', params: { displayName: author.displayName } }"
+                  ></p>
+                </div>
+                <div class="contactRequestMessage">
+                  <div class="ContactProfile--action-item fontSize-p">
+                    <span>
+                      <a
+                        href="#"
+                        role="button"
+                        data-bind="click: sendContactRequest, disable: actionInProgress, css: { 'in-progress': actionInProgress }, focusHandler: { priority: focusImportance, callback: focusHandlerCallback }, l10n: {key: 'contact_information_add_to_contacts'}"
+                        tabindex="-1"
+                      ></a>
+                    </span>
+                  </div>
+                </div>
+                <!-- /ko -->
+              </script>
+
+              <script
+                type="text/html"
+                id="contactRequestOutgoingResendMessageContentTemplate"
+              >
+                <p
+                  class="contactRequestResendMessage"
+                  data-bind="css: typeClasses"
+                >
+                  <span
+                    data-bind="l10n: { key: 'message_text_contactRequestOutgoingResendMessage' }, css: { 'in-progress': actionInProgress }"
+                  ></span>
+                  -
+                  <a
+                    data-bind="l10n: { key: 'message_text_contactRequestOutgoingResendAction' }, click: sendContactRequest, css: { 'in-progress': actionInProgress }"
+                    class="clickable"
+                  ></a>
+                </p>
+              </script>
+
+              <script
+                type="text/html"
+                id="contactRequestOutgoingAgentMessageContentTemplate"
+              >
+                <p data-bind="css: typeClasses">
+                  <swx-avatar
+                    params="avatar: author.avatar, isAgent: author.isAgent, isPstn: author.isPstn, size: 65"
+                  ></swx-avatar>
+                </p>
+                <div
+                  class="contactRequestMessage contactRequestOutgoingMessage"
+                >
+                  <p
+                    data-bind="l10n: { key: 'message_text_contactRequestOutgoingMessage', params: { displayName: author.displayName } }"
+                  ></p>
+                </div>
+                <div class="buttonRow">
+                  <button
+                    type="button"
+                    class="btn primary clickable contactRequestSend"
+                    data-swx-testId="sendContactRequest"
+                    data-bind="click: sendContactRequest, disable: actionInProgress, css: { 'in-progress': actionInProgress }, focusHandler: { priority: focusImportance, callback: focusHandlerCallback }"
+                    tabindex="-1"
+                  >
+                    <span
+                      class="contactRequestBtnText"
+                      data-bind="l10n: { key: 'message_text_contactRequestSendAction' }"
+                    ></span>
+                  </button>
+                </div>
+              </script>
+
+              <script
+                type="text/html"
+                id="suggestedContactMessageContentTemplate"
+              >
+                <p data-bind="css: typeClasses">
+                  <swx-avatar
+                    params="avatar: author.avatar, isAgent: author.isAgent, displayName: author.displayName, size: 65"
+                  ></swx-avatar>
+                </p>
+                <div class="contactRequestMessage suggestedContactMessage">
+                  <p
+                    data-bind="l10n: { key: 'message_text_suggestedContactGreeting', params: { displayName: author.displayName } }"
+                  ></p>
+                </div>
+                <div class="buttonRow">
+                  <button
+                    type="button"
+                    class="btn primary clickable contactRequestSend"
+                    data-bind="click: sendContactRequest, disable: actionInProgress, css: { 'in-progress': actionInProgress }, focusHandler: { priority: 1, callback: focusHandlerCallback }"
+                    tabindex="-1"
+                  >
+                    <span
+                      data-bind="l10n: { key: 'message_text_suggestedContactConnectAction' }"
+                    ></span>
+                  </button>
+                </div>
+              </script>
+
+              <script
+                type="text/html"
+                id="unblockContactMessageContentTemplate"
+              >
+                <div data-bind="css: typeClasses">
+                  <div class="contactRequestMessage unblockContactMessage">
+                    <p
+                      data-bind="l10n: { key: 'message_text_contactBlockedMessage', params: { displayName: author.displayName } }"
+                    ></p>
+                  </div>
+                  <div class="buttonRow">
+                    <div class="column alignLeft">
+                      <button
+                        type="button"
+                        class="btn primary clickable unblockContact"
+                        data-bind="click: unblockContact, disable: actionInProgress, css: { 'in-progress': actionInProgress }, focusHandler: { priority: 1, callback: focusHandlerCallback }"
+                        tabindex="-1"
+                      >
+                        <span
+                          data-bind="l10n: { key: 'message_text_unblockContact' }"
+                        ></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </script>
+
+              <script type="text/html" id="spacesWelcomeMessageContentTemplate">
+                <div class="welcomeMessage">
+                  <span class="emoticon hi large animated"
+                    ><span class="emoSprite">(hi)</span
+                    ><canvas data-item-id="hi" data-is-animated="true"></canvas
+                  ></span>
+
+                  <div
+                    data-bind="css: {clickable: spaceLink() || showSpacesCTA()}"
+                  >
+                    <div
+                      data-bind="l10n: { key: 'spaces_welcomeTitle' }"
+                      class="title fontSize-h2"
+                    ></div>
+                    <div
+                      data-bind="text: welcomeMessage"
+                      class="fontSize-p"
+                    ></div>
+                  </div>
+                  <!-- ko if: isJoiningEnabled -->
+                  <swx-invite-link
+                    class="invite-link"
+                    params="topic: conversation.topic, uri: conversation.uri, isMessageContent: true"
+                  >
+                  </swx-invite-link>
+                  <!-- /ko -->
+                </div>
+                <!-- ko if: showSpacesCTA -->
+                <div class="ctas">
+                  <div
+                    class="cta clickable"
+                    data-bind="click: editTopicAction, enterKey: editTopicAction"
+                    tabindex="-1"
+                  >
+                    <div
+                      data-bind="l10n: { key: 'spaces_welcomeRenameBtnTitle' }"
+                      class="title fontSize-h3 iconfont edit"
+                    ></div>
+                    <div
+                      data-bind="l10n: { key: 'spaces_welcomeRenameBtnMessage' }"
+                      class="description fontSize-p"
+                    ></div>
+                  </div>
+                  <div
+                    class="cta clickable"
+                    data-bind="click: settingsAction, enterKey: settingsAction"
+                    tabindex="-1"
+                  >
+                    <div
+                      data-bind="l10n: { key: 'spaces_welcomeSettingsBtnTitle' }"
+                      class="title fontSize-h3 iconfont settings"
+                    ></div>
+                    <div
+                      data-bind="l10n: { key: 'spaces_welcomeSettingsBtnMessage' }"
+                      class="description fontSize-p"
+                    ></div>
+                  </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: othersAddedMessageContent -->
+                <div class="participantMessage clickable">
+                  <p
+                    data-bind="html: othersAddedMessageContent, css: typeClasses"
+                  ></p>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: agentsMessageContent -->
+                <div class="participantMessage">
+                  <p
+                    data-bind="html: agentsMessageContent, css: typeClasses"
+                  ></p>
+                </div>
+                <!-- /ko -->
+              </script>
+
+              <script type="text/html" id="urlMessageContentTemplate">
+                <!--ko if: !copyLinkEnabled() -->
+                <div class="messageTextWrapper">
+                  <p
+                    data-bind="html: content, visible: !translationItem.visible(), click: $parent.messageClicked.bind(this)"
+                    class="urlPreviewText"
+                  ></p>
+                  <!-- ko if: translationItem.isEnabled -->
+                  <p
+                    data-bind="html: translationItem.translationText, visible: translationItem.visible()"
+                    class="urlPreviewText"
+                  ></p>
+                  <p>
+                    <a
+                      href="#"
+                      role="button"
+                      data-bind="text: translationItem.toggleText, attr: {title: translationItem.toggleText, 'aria-label': translationItem.toggleText}, click: translationItem.toggle"
+                    ></a>
+                  </p>
+                  <!-- /ko -->
+                </div>
+                <!-- /ko -->
+                <!-- ko if: showGiphyMetadata -->
+                <span
+                  class="giphyMetadata fontSize-p"
+                  data-bind="text: giphyMetadata"
+                ></span>
+                <!-- /ko -->
+                <div data-bind="foreach: previews">
+                  <!--ko if: !ytPlayer() -->
+                  <div data-bind="css: typeClasses" class="urlPreview">
+                    <a
+                      class="thumbnail"
+                      data-bind="attr: { href: url, title: url, target: target, rel: rel}, event: {click: $parent.openUrlPreview.bind(this, url())}, css: {noScale: originalSize(), scaledByW: scaledByW(), scaledByH: scaledByH(), gif: isGif()}"
+                      tabindex="-1"
+                    >
+                      <!-- ko if: typeClasses.youtube -->
+                      <span class="iconfont play"></span>
+                      <!-- /ko -->
+
+                      <img
+                        class="scaled"
+                        alt=""
+                        aria-hidden="true"
+                        role="presentation"
+                        data-bind="css: {scaledW: scaledByW(), scaledH: scaledByH(), originalSize: originalSize(), originalGif: isGif(), tall: tall, wide: wide}, attr: {src: thumbnail}"
+                      />
+                      <span class="mask"></span>
+                      <div class="info" data-bind="css: {gif: isGif()}">
+                        <span
+                          class="title strong fontSize-p"
+                          data-bind="text: title"
+                        ></span>
+                        <span
+                          class="description fontSize-p"
+                          data-bind="text: description"
+                        ></span>
+                        <div class="domainName site fontSize-p">
+                          <img
+                            class="favicon"
+                            alt=""
+                            role="presentation"
+                            aria-hidden="true"
+                            data-bind="attr: {src: favicon}, css: { hide: !favicon() }"
+                          />
+                          <span data-bind="text: site"></span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <!-- /ko -->
+                  <!--ko if: ytPlayer() -->
+                  <div class="message-youtube-embed">
+                    <iframe
+                      data-bind="attr: {'id': playerId, 'src': youtubeUri }"
+                      type="text/html"
+                      allowfullscreen
+                      frameborder="0"
+                      class="chat-youtube-iframe"
+                      tabindex="-2"
+                    ></iframe>
+                  </div>
+                  <!-- /ko -->
+                </div>
+              </script>
+
+              <script type="text/html" id="pollMessageContentTemplate">
+                <div
+                  data-bind="css: { 'poll-message': true, 'poll-message--disabled': answerSent }"
+                >
+                  <p class="poll-message-heading" data-bind="html: content"></p>
+
+                  <fieldset
+                    class="poll-message-content"
+                    data-bind="template: { name: 'pollMessageAnswerTemplate', foreach: pollAnswers, as: 'answer' }"
+                  ></fieldset>
+
+                  <div
+                    data-bind="text: peopleVotedText"
+                    class="fontSize-p"
+                  ></div>
+                </div>
+              </script>
+
+              <script type="text/html" id="pollMessageAnswerTemplate">
+                <label class="poll-message-answer">
+                  <input
+                    type="radio"
+                    data-bind="value: $index, checked: $parent.checkedAnswer, disable: $parent.answerSent, click: $parent.onAnswerClick"
+                    tabindex="-1"
+                  />
+                  <div class="poll-message-answer-box">
+                    <div
+                      class="poll-message-answer-votes-bar"
+                      data-bind="style: { width: (answer.barWidth + '%') }"
+                    ></div>
+                    <span
+                      class="poll-message-answer-text"
+                      data-bind="html: answer.answerText"
+                    ></span>
+                    <span
+                      class="poll-message-answer-votes-count"
+                      data-bind="text: answer.users.length || ''"
+                    ></span>
+                  </div>
+                </label>
+                <div class="poll-message-answer-votes">
+                  <div
+                    class="poll-message-answer-avatars"
+                    data-bind="foreach: answer.users"
+                  >
+                    <!-- ko if: ($index() < 2) -->
+                    <!-- ko if: person -->
+                    <swx-avatar-deprecated
+                      params="avatar: person.avatarUrl(), isGroupAvatar: false, displayName: displayName"
+                      data-bind="attr: {title: displayName}"
+                    ></swx-avatar-deprecated>
+                    <!-- /ko -->
+                    <!-- ko ifnot: person -->
+                    <swx-avatar-deprecated
+                      params="isGroupAvatar: false, displayName: displayName"
+                      data-bind="attr: {title: displayName}"
+                    ></swx-avatar-deprecated>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                  </div>
+                  <!-- ko if: (answer.users.length > 2) -->
+                  <div
+                    class="poll-message-answer-ellipsis"
+                    data-bind="click: $parent.pollAvatarsVM.onEllipsisClick.bind($data, $index())"
+                  ></div>
+                  <swx-user-list-popup
+                    params="
+                eventContext: $parent,
+                isSelfPopup: $parent.pollAvatarsVM.isSelfPopup.bind(null, $index()),
+                title: $parent.pollAvatarsVM.votedByCount(answer.users.length),
+                users: $parent.pollAvatarsVM.users"
+                  ></swx-user-list-popup>
+                  <!-- /ko -->
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftCardMessageContentTemplate">
+                <div class="swift">
+                  <!-- ko if: !swift.isSupported() && swift.isValid()-->
+                  <!-- ko template: { name: 'swiftUnsupported', data: swift } --><!-- /ko -->
+                  <!-- /ko -->
+                  <!-- ko if: swift.isSupported() -->
+                  <!-- ko if: swift.isCarousel -->
+                  <!-- ko template: { name: 'swiftCarouselCard', data: swift } --><!-- /ko -->
+                  <!-- /ko -->
+                  <!-- ko if: !swift.isCarousel -->
+                  <!-- ko template: { name: 'swiftSingleCard', data: swift.cards[0] } --><!-- /ko -->
+                  <!-- /ko -->
+                  <!-- /ko -->
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftUnsupported">
+                <div class="card unsupported">
+                  <span class="main emoticon hi animated">
+                    <span class="emoSprite">(hi)</span>
+                    <canvas data-item-id="hi" data-is-animated="true"></canvas>
+                  </span>
+                  <div class="text">
+                    <div
+                      data-bind="l10n: { key: 'message_text_swift_unsupported' }"
+                    ></div>
+                  </div>
+                  <div class="buttons">
+                    <div
+                      class="button"
+                      data-bind="attr: { tabindex: button.isValid() ? 0 : null, role: button.isValid() ? 'button' : null, title: button.tooltip },
+                                        enterKey: button.isValid() ? button.action : null,
+                                        click: button.isValid() ? button.action : null, clickBubble: false"
+                    >
+                      <span
+                        class="normal"
+                        data-bind="text: button.title"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftSingleCard">
+                <div
+                  class="card"
+                  data-bind="template: { name: contentType === 'Hero' || contentType === 'Thumb' ? 'swiftCard' : 'swiftCard' + contentType, data: content },
+                                 css: contentType.toLowerCase()"
+                ></div>
+              </script>
+
+              <script type="text/html" id="swiftCarouselCard">
+                <div
+                  class="carousel"
+                  data-bind="css: { first: isFirst, last: isLast, multiple: isMultiple }"
+                >
+                  <div
+                    class="container"
+                    data-bind="css: { multiLine: areButtonsMultiLine },
+                                          foreach: {
+                                              data: cards,
+                                              as: 'card',
+                                              afterRender: function(e, card) { e[1].addEventListener('focus', function() { moveToCard(card); }, true); }
+                                          },
+                                          style: { left: carouselLeftPosition(), right: carouselRightPosition() }"
+                  >
+                    <div
+                      class="card"
+                      data-bind="template: { name: card.contentType === 'Hero' || card.contentType === 'Thumb' ? 'swiftCard' : 'swiftCard' + card.contentType, data: card.content },
+                                        css: card.contentType.toLowerCase()"
+                    ></div>
+                  </div>
+                  <div
+                    class="prev"
+                    data-bind="click: prevCard, enterKey: prevCard, l10n_attr: { title: 'message_text_swift_prevCard' }"
+                  >
+                    <div
+                      class="button iconfont"
+                      role="button"
+                      tabindex="0"
+                    ></div>
+                  </div>
+                  <div
+                    class="next"
+                    data-bind="click: nextCard, enterKey: nextCard, l10n_attr: { title: 'message_text_swift_nextCard' }"
+                  >
+                    <div
+                      class="button iconfont"
+                      role="button"
+                      tabindex="0"
+                    ></div>
+                  </div>
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftCard">
+                <div
+                  class="cardContent"
+                  data-bind="attr: { tabindex: (tap && tap.isValid()) ? -1 : null, role: (tap && tap.isValid()) ? 'presentation' : null, title: (tap && tap.isValid()) ? tap.tooltip : null },
+                                              css: { tap: tap && tap.isValid() },
+                                              enterKey: (tap && tap.isValid()) ? tap.action : null,
+                                              click: (tap && tap.isValid()) ? tap.action : null, clickBubble: false"
+                >
+                  <!-- ko if: mainSection.isValid() -->
+                  <!-- ko template: { name: 'swiftSection', data: mainSection } --><!-- /ko -->
+                  <!-- /ko -->
+                  <div
+                    class="buttons"
+                    data-bind="foreach: { data: buttons, as: 'button' }, css: { multiLine: areButtonsMultiLine}"
+                  >
+                    <!-- ko template: { name: 'swiftButton', data: button } --><!-- /ko -->
+                  </div>
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftCardFlex">
+                <div
+                  class="cardContent"
+                  data-bind="attr: { tabindex: (tap && tap.isValid()) ? -1 : null, role: (tap && tap.isValid()) ? 'presentation' : null, title: (tap && tap.isValid()) ? tap.tooltip : null },
+                                              css: { tap: tap && tap.isValid() },
+                                              enterKey: (tap && tap.isValid()) ? tap.action : null,
+                                              click: (tap && tap.isValid()) ? tap.action : null, clickBubble: false"
+                >
+                  <div class="section">
+                    <!-- ko if: title || subtitle || text -->
+                    <div class="textContent">
+                      <!-- ko if: title -->
+                      <h1
+                        data-bind="html: title, attr: { title: $element.textContent }"
+                      ></h1>
+                      <!-- /ko -->
+                      <!-- ko if: subtitle -->
+                      <h2
+                        data-bind="html: subtitle, attr: { title: $element.textContent }"
+                      ></h2>
+                      <!-- /ko -->
+                      <!-- ko if: text -->
+                      <p
+                        class="normal"
+                        data-bind="html: text, attr: { title: $element.textContent }, css: expandedText() "
+                      ></p>
+                      <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: images.length > 0 -->
+                    <!-- ko with: images[0] -->
+                    <div
+                      class="image"
+                      data-bind="attr: { tabindex: (tap && tap.isValid()) ? 0 : null, role: (tap && tap.isValid()) ? 'button' : null, title: (tap && tap.isValid()) ? getTitleByType() : null },
+                                              css: { tap: tap && tap.isValid() },
+                                              enterKey: (tap && tap.isValid()) ? tap.action : null,
+                                              click: (tap && tap.isValid()) ? tap.action : null, clickBubble: false"
+                    >
+                      <img
+                        data-bind="attr: { src: url, alt: alt, width: uiSize().width, height: uiSize().height },
+                                    style: { left: leftAlignment(), bottom: bottomAlignment(), right: rightAlignment()}"
+                      />
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                  </div>
+
+                  <!-- ko if: buttons.length > 0 -->
+                  <div
+                    class="buttons"
+                    data-bind="foreach: { data: buttons, as: 'button' }, css: { multiLine: areButtonsMultiLine}"
+                  >
+                    <!-- ko template: { name: 'swiftButton', data: button } --><!-- /ko -->
+                  </div>
+                  <!-- /ko -->
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftCardReceipt">
+                <div
+                  data-bind="attr: { tabindex: (tap && tap.isValid()) ? 0 : null, role: (tap && tap.isValid()) ? 'button' : null, title: (tap && tap.isValid()) ? tap.tooltip : null },
+                                              css: { tap: tap && tap.isValid() },
+                                              enterKey: (tap && tap.isValid()) ? tap.action : null,
+                                              click: (tap && tap.isValid()) ? tap.action : null, clickBubble: false"
+                >
+                  <!-- ko if: title -->
+                  <h1 data-bind="html: title"></h1>
+                  <!-- /ko -->
+                  <!-- ko if: facts.length !== 0 -->
+                  <div
+                    class="facts"
+                    role="list"
+                    data-bind="foreach: { data: facts, as: 'fact' }"
+                  >
+                    <!-- ko template: { name: 'swiftFact', data: fact } --><!-- /ko -->
+                  </div>
+                  <!-- /ko -->
+                  <!-- ko if: displayedItems().length !== 0 -->
+                  <div
+                    class="items"
+                    role="list"
+                    data-bind="foreach: { data: displayedItems, as: 'item' }"
+                  >
+                    <div class="item" role="listitem">
+                      <!-- ko template: { name: item.images.length !== 0 ? 'swiftSection' : 'swiftItem', data: item } --><!-- /ko -->
+                    </div>
+                  </div>
+                  <!-- /ko -->
+                  <!-- ko if: showFoldButton -->
+                  <div
+                    class="button fold"
+                    data-bind="attr: { tabindex: -1, role: 'button', title: foldButtonText() },
+                                   enterKey: triggerFoldAction,
+                                   click: triggerFoldAction, clickBubble: false"
+                  >
+                    <span
+                      class="normal"
+                      data-bind="text: foldButtonText()"
+                    ></span>
+                  </div>
+                  <!-- /ko -->
+                  <div class="summary">
+                    <!-- ko if: vat -->
+                    <div class="line">
+                      <span
+                        class="key normal"
+                        data-bind="l10n: { key: 'message_text_swift_vat' }"
+                      ></span>
+                      <span class="value normal" data-bind="text: vat"></span>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: tax -->
+                    <div class="line">
+                      <span
+                        class="key normal"
+                        data-bind="l10n: { key: 'message_text_swift_tax' }"
+                      ></span>
+                      <span class="value normal" data-bind="text: tax"></span>
+                    </div>
+                    <!-- /ko -->
+                    <div class="line">
+                      <span
+                        class="key normal"
+                        data-bind="l10n: { key: 'message_text_swift_totalPrice' }"
+                      ></span>
+                      <span class="value normal" data-bind="text: total"></span>
+                    </div>
+                  </div>
+                  <div
+                    class="buttons"
+                    data-bind="foreach: { data: buttons, as: 'button' }, css: { multiLine: areButtonsMultiLine}"
+                  >
+                    <!-- ko template: { name: 'swiftButton', data: button } --><!-- /ko -->
+                  </div>
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftCardSignIn">
+                <span class="main emoticon hi animated">
+                  <span class="emoSprite">(hi)</span>
+                  <canvas data-item-id="hi" data-is-animated="true"></canvas>
+                </span>
+                <div class="text" data-bind="html: text"></div>
+                <div
+                  class="buttons"
+                  data-bind="foreach: { data: buttons, as: 'button' }"
+                >
+                  <!-- ko template: { name: 'swiftButton', data: button } --><!-- /ko -->
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftSection">
+                <div
+                  class="section"
+                  data-bind="attr: { tabindex: (tap && tap.isValid()) ? 0 : null, role: (tap && tap.isValid()) ? 'presentation' : null, title: (tap && tap.isValid()) ? getTitleByType() : null },
+                css: { tap: tap && tap.isValid() },
+                enterKey: (tap && tap.isValid()) ? tap.action : null,
+                click: (tap && tap.isValid()) ? tap.action : null, clickBubble: false"
+                >
+                  <div class="textContent">
+                    <!-- ko if: title -->
+                    <h1
+                      data-bind="html: title, attr: { title: $element.textContent }"
+                    ></h1>
+                    <!-- /ko -->
+                    <!-- ko if: price -->
+                    <span
+                      class="price normal"
+                      data-bind="html: price, attr: { title: $element.textContent }"
+                    ></span>
+                    <!-- /ko -->
+                    <!-- ko if: subtitle -->
+                    <h2
+                      data-bind="html: subtitle, attr: { title: $element.textContent }"
+                    ></h2>
+                    <!-- /ko -->
+                    <!-- ko if: text -->
+                    <p
+                      class="normal"
+                      data-bind="html: text, attr: { title: $element.textContent }, css: expandedText() "
+                    ></p>
+                    <!-- /ko -->
+                  </div>
+                  <!-- ko if: images.length > 0 -->
+                  <!-- ko with: images[0] -->
+                  <div
+                    class="image"
+                    data-bind="attr: { tabindex: (tap && tap.isValid()) ? 0 : null, role: (tap && tap.isValid()) ? 'button' : null, title: (tap && tap.isValid()) ? getTitleByType() : null },
+                                              css: { tap: tap && tap.isValid() },
+                                              enterKey: (tap && tap.isValid()) ? tap.action : null,
+                                              click: (tap && tap.isValid()) ? tap.action : null, clickBubble: false"
+                  >
+                    <img
+                      data-bind="attr: { src: url, alt: alt, width: uiSize().width, height: uiSize().height },
+                                    style: { left: leftAlignment(), bottom: bottomAlignment(), right: rightAlignment()}"
+                    />
+                  </div>
+                  <!-- /ko -->
+                  <!-- /ko -->
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftButton">
+                <div
+                  class="button"
+                  data-bind="attr: { tabindex: isValid() ? -1 : null, role: isValid() ? 'button' : null, title: tooltip },
+                                   enterKey: isValid() ? action : null,
+                                   click: isValid() ? action : null, clickBubble: false"
+                >
+                  <span class="normal" data-bind="text: title"></span>
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftFact">
+                <div class="fact" role="listitem">
+                  <span class="key normal" data-bind="html: key"></span>
+                  <span class="value normal" data-bind="html: value"></span>
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftItem">
+                <span class="title" data-bind="html: title"></span>
+                <span class="price normal" data-bind="text: price"></span>
+              </script>
+
+              <script type="text/html" id="swiftCardVideo">
+                <div class="cardContent" data-bind="css: aspect">
+                  <div class="videoCard">
+                    <swx-video-player
+                      params="media: media.video, thumbnail: image.url, showLoadingInfo: true, autoplay: autostart, muted: true, autoloop: false, displayMuteButton: true, messageId: $parent.messageId, conversationId: $parent.conversationId, title: title, subtitle: subtitle"
+                    ></swx-video-player>
+                  </div>
+                  <div
+                    data-bind="template: 'mediaCardSection', data: $data"
+                  ></div>
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftCardAudio">
+                <div class="cardContent">
+                  <div class="audioCard">
+                    <!-- ko if: hasThumbnail() -->
+                    <img
+                      class="thumbnail"
+                      data-bind="attr: { src: image.url, alt: image.alt, width: image.uiSize().width, height: image.uiSize().height },
+                style: { left: image.leftAlignment(), bottom: image.bottomAlignment(), right: image.rightAlignment() }"
+                    />
+                    <!-- /ko -->
+
+                    <div
+                      class="audio-message"
+                      data-bind="css: {thumbnail: hasThumbnail()}"
+                    >
+                      <div class="media-holder">
+                        <div class="media-content">
+                          <div class="audioIcon">
+                            <span class="iconfont audiomail"></span>
+                          </div>
+                          <swx-audio-player
+                            params="media: media.audio, autoplay: autostart, showLoadingInfo: true, messageId: $parent.messageId, conversationId: $parent.conversationId"
+                          ></swx-audio-player>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    data-bind="template: 'mediaCardSection', data: $data"
+                  ></div>
+                </div>
+              </script>
+
+              <script type="text/html" id="swiftCardAnimation">
+                <div class="cardContent">
+                  <div class="animationCard">
+                    <swx-gif-player
+                      params="media: media.animation"
+                    ></swx-gif-player>
+                  </div>
+                  <div
+                    data-bind="template: 'mediaCardSection', data: $data"
+                  ></div>
+                </div>
+              </script>
+
+              <script type="text/html" id="mediaCardSection">
+                <!-- ko if: hasTextInfo() -->
+                <div class="section">
+                  <div class="textContent">
+                    <!-- ko if: title -->
+                    <h1 data-bind="text: title, attr: { title: title }"></h1>
+                    <!-- /ko -->
+                    <!-- ko if: subtitle -->
+                    <h2
+                      data-bind="text: subtitle, attr: { title: subtitle }"
+                    ></h2>
+                    <!-- /ko -->
+                    <!-- ko if: mediaSourceDomain -->
+                    <h3
+                      data-bind="text: mediaSourceDomain, attr: { title: mediaSourceDomain }"
+                    ></h3>
+                    <!-- /ko -->
+                  </div>
+                </div>
+                <!-- /ko -->
+                <div
+                  class="buttons"
+                  data-bind="foreach: { data: buttons, as: 'button' }, css: { multiLine: areButtonsMultiLine}"
+                >
+                  <!-- ko template: { name: 'swiftButton', data: button } --><!-- /ko -->
+                </div>
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="shell toasts"
+        id="toasts"
+        role="alert"
+        aria-atomic="true"
+      ></div>
+
+      <div class="shell toastTemplates">
+        <div
+          id="shellToastCall"
+          class="toast extended themeBlue"
+          role="alert"
+          aria-atomic="true"
+        >
+          <div class="top">
+            <img
+              style="
+                filter: invert(100%) sepia(38%) saturate(2357%)
+                  hue-rotate(296deg) brightness(131%) contrast(107%);
+              "
+              src="Skype_watermark.svg"
+              width="56px"
+              height="29px"
+            />
+            <div class="message">
+              <span class="iconfont callActive callIn"></span>
+              <p class="small">
+                <span class="atOnly" i18n="Skype">Skype</span>
+                <span i18n="Toasts.IncomingCall">Incoming call</span>
+              </p>
+            </div>
+
+            <span class="tile">
+              <span class="tileAvatar circle">
+                <span class="tileImage">
+                  <img data-attr="src|avatarUrl" />
+                </span>
+              </span>
+            </span>
+
+            <div class="tile">
+              <span class="tileText">
+                <span class="tileName">
+                  <h4 class="strong" data-html="displayName"></h4>
+                </span>
+              </span>
+            </div>
+
+            <div class="tile">
+              <span class="tileText">
+                <span class="tileName">
+                  <h4 class="strong" data-html="displayName"></h4>
+                </span>
+              </span>
+            </div>
+
+            <div class="button row" data-events="actionShortcuts">
+              <button
+                class="btn primary circle"
+                type="btn"
+                data-click="acceptWithVideo"
+                title="Ctrl + Alt + PgUp"
+                aria-label="Accept with video using Ctrl + Alt + Page Up"
+              >
+                <span class="iconfont videoOn"></span>
+              </button>
+              <button
+                class="btn primary circle"
+                type="btn"
+                data-click="acceptWithAudio"
+                title="Alt + PgUp"
+                aria-label="Accept with voice using Alt + Page Up"
+              >
+                <span class="iconfont callStart"></span>
+              </button>
+              <button
+                class="btn primary circle red"
+                type="btn"
+                data-click="reject"
+                title="Alt + PgDn"
+                aria-label="Reject call using Alt + Page Down"
+              >
+                <span class="iconfont callEnd"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="iconfont circle information"></div>
+            <div class="message">
+              <p class="small" i18n="Toasts.AcceptCallWithVideo">
+                Accept with video using Ctrl + Alt + Page Up
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="shellToastCallNoVideo"
+          class="toast extended themeBlue"
+          role="alert"
+          aria-atomic="true"
+        >
+          <div class="top">
+            <img
+              style="
+                filter: invert(100%) sepia(38%) saturate(2357%)
+                  hue-rotate(296deg) brightness(131%) contrast(107%);
+              "
+              src="Skype_watermark.svg"
+              width="56px"
+              height="29px"
+            />
+
+            <div class="message">
+              <span class="iconfont callActive callIn"></span>
+              <p class="small">
+                <span class="atOnly" i18n="Skype">Skype</span>
+                <span i18n="Toasts.IncomingCall">Incoming call</span>
+              </p>
+            </div>
+
+            <span class="tile">
+              <span class="tileAvatar circle">
+                <span class="tileImage">
+                  <img data-attr="src|avatarUrl" />
+                </span>
+              </span>
+            </span>
+
+            <div class="tile">
+              <span class="tileText">
+                <span class="tileName">
+                  <h4 class="strong" data-html="displayName"></h4>
+                </span>
+              </span>
+            </div>
+
+            <div class="tile">
+              <span class="tileText">
+                <span class="tileName">
+                  <h4 class="strong" data-html="displayName"></h4>
+                </span>
+              </span>
+            </div>
+
+            <div class="button row" data-events="actionShortcuts">
+              <button
+                class="btn primary circle"
+                type="btn"
+                data-click="acceptWithAudio"
+                title="Alt + PgUp"
+                aria-label="Accept with voice using Alt + Page Up"
+              >
+                <span class="iconfont callStart"></span>
+              </button>
+              <button
+                class="btn primary circle red"
+                type="btn"
+                data-click="reject"
+                title="Alt + PgDn"
+                aria-label="Reject call using Alt + Page Down"
+              >
+                <span class="iconfont callEnd"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="iconfont circle information"></div>
+            <div class="message">
+              <p class="small" i18n="Toasts.AcceptCallWitoutVideo">
+                Accept using Alt + Page Up
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shell hintsTemplates">
+      <div class="hintCore" id="hintCore"></div>
+
+      <div class="hintClose" id="hintClose">
+        <span class="iconfont cross" data-click="dismissHint"></span>
+      </div>
+
+      <div class="hint" id="searchHint">
+        <div class="hintContent">
+          <div class="hintContentInner">
+            <div class="slideText">
+              <div class="table">
+                <div class="tableCell" i18n="Hints.SearchByEmail">
+                  Search by email or Skype Name.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint" id="addContactHint">
+        <div class="hintContent">
+          <div class="hintContentInner">
+            <div class="slideText">
+              <div class="table">
+                <div class="tableCell" i18n="Hints.AddToContacts">
+                  Select "add to contacts" and they'll get your request.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint" id="typeImHint">
+        <div class="hintContent">
+          <div class="hintContentInner">
+            <div class="slideText">
+              <div class="table">
+                <div class="tableCell" i18n="Hints.RequestAccepted">
+                  When your request is accepted, send a message.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint" id="myHint3">
+        <div class="hintContent">
+          <div class="hintContentInner">
+            <div class="singleSlide">
+              <div class="table">
+                <div class="tableCell">
+                  <div class="emoticon highFive"></div>
+                  <div class="" i18n="Hints.CheckEmoticons">
+                    Yay! Now check out your emoticons...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script defer src="main.js"></script>
+  </body>
+</html>
