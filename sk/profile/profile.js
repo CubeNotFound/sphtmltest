@@ -133,7 +133,6 @@ let activityMessageText = "Change activity message";
 saveMoodEdit.addEventListener("click", (event) => {
   if (changeActivityMessage.value != "") {
     activityMessageText = changeActivityMessage.value;
-    changeActivityMessage.placeholder = activityMessageText;
     activityMessage.innerHTML = activityMessageText;
     toggleEditMoodContainer();
   } else {
