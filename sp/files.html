@@ -144,224 +144,202 @@ const editor = document.getElementById("content");
 const pathEl = document.getElementById("path");
 const tokenEl = document.getElementById("token");
 
-function auth() {
-    return { "Authorization": tokenEl.value.trim() };
+function authHeaders(extra = {}) {
+    return {
+        "Authorization": tokenEl.value,
+        ...extra
+    };
 }
 
-function postJson(url, body) {
-    return fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            ...auth()
-        },
-        body: JSON.stringify(body)
-    }).then(r => r.json());
+function joinPath(base, name) {
+    if (!base) return name;
+    return base.replace(/\/$/, "") + "/" + name;
 }
 
-// ------------------------------------------------
-// LIST (GET)
-// ------------------------------------------------
+/* ---------- LIST FILES ---------- */
 async function loadFiles(path = "") {
     currentPath = path;
     currentFile = null;
-    currentIsDir = true;
-
     editor.value = "";
     editor.disabled = true;
     pathEl.textContent = path || "/";
 
+    const res = await fetch(
+        `${API}/servers/files/list?id=${serverId}&path=${encodeURIComponent(path)}`,
+        { headers: authHeaders() }
+    );
+
+    const json = await res.json();
     filesEl.innerHTML = "";
 
-    const res = await fetch(
-        `${API}/servers/files/list?id=${encodeURIComponent(serverId)}&path=${encodeURIComponent(path)}`,
-        { headers: auth() }
-    );
-
-    const json = await res.json();
-    if (!json.success) return;
-
-    if (path) {
-        const parent = path.split("/").slice(0, -1).join("/");
-        addEntry("..", true, parent);
+    if (!json.success) {
+        filesEl.textContent = "Failed to load files";
+        return;
     }
 
-    json.entries.forEach(e => {
-        addEntry(e.name, e.isDirectory, e.path);
-    });
+    if (path) {
+        const up = document.createElement("div");
+        up.textContent = "..";
+        up.className = "dir";
+        up.onclick = () => {
+            const parent = path.split("/").slice(0, -1).join("/");
+            loadFiles(parent);
+        };
+        filesEl.appendChild(up);
+    }
+
+    for (const e of json.entries) {
+        const div = document.createElement("div");
+        div.textContent = e.name;
+        div.className = e.isDirectory ? "dir" : "file";
+
+        div.onclick = () => selectEntry(e);
+        filesEl.appendChild(div);
+    }
 }
 
-function addEntry(name, isDir, path) {
-    const div = document.createElement("div");
-    div.textContent = isDir ? `[${name}]` : name;
-    div.className = isDir ? "dir" : "file";
+function selectEntry(entry) {
+    document.querySelectorAll("#files div").forEach(d => d.classList.remove("selected"));
+    event.target.classList.add("selected");
 
-    div.onclick = () => {
-        [...filesEl.children].forEach(c => c.classList.remove("selected"));
-        div.classList.add("selected");
+    currentFile = joinPath(currentPath, entry.name);
+    currentIsDir = entry.isDirectory;
 
-        currentIsDir = isDir;
+    pathEl.textContent = currentFile;
 
-        if (isDir) loadFiles(path);
-        else openFile(path);
-    };
-
-    filesEl.appendChild(div);
+    if (entry.isDirectory) {
+        editor.value = "";
+        editor.disabled = true;
+        loadFiles(currentFile);
+    } else {
+        readFile(currentFile);
+    }
 }
 
-// ------------------------------------------------
-// READ (GET)
-// ------------------------------------------------
-async function openFile(path) {
-    currentFile = path;
-    currentIsDir = false;
-    pathEl.textContent = path;
-
+/* ---------- READ ---------- */
+async function readFile(path) {
     const res = await fetch(
-        `${API}/servers/files/read?id=${encodeURIComponent(serverId)}&path=${encodeURIComponent(path)}`,
-        { headers: auth() }
+        `${API}/servers/files/read?id=${serverId}&path=${encodeURIComponent(path)}`,
+        { headers: authHeaders() }
     );
-
     const json = await res.json();
-    if (!json.success) return;
 
-    editor.value = json.content;
+    if (!json.success) {
+        alert("Failed to read file");
+        return;
+    }
+
     editor.disabled = false;
+    editor.value = json.content;
 }
 
-// ------------------------------------------------
-// WRITE (POST)
-// ------------------------------------------------
+/* ---------- SAVE ---------- */
 async function saveFile() {
     if (!currentFile || currentIsDir) return;
 
-    await postJson(
-        `${API}/servers/files/write`,
-        { id: serverId, path: currentFile, content: editor.value }
-    );
+    await fetch(`${API}/servers/files/write`, {
+        method: "POST",
+        headers: authHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify({
+            id: serverId,
+            path: currentFile,
+            content: editor.value
+        })
+    });
+
+    alert("Saved");
 }
 
-// ------------------------------------------------
-// DELETE (POST)
-// ------------------------------------------------
+/* ---------- DELETE ---------- */
 async function deleteEntry() {
-    const target = currentIsDir ? currentPath : currentFile;
-    if (!target) return;
+    if (!currentFile) return;
+    if (!confirm("Delete this?")) return;
 
-    if (!confirm("Delete selected entry?")) return;
-
-    await postJson(
-        `${API}/servers/files/delete`,
-        { id: serverId, path: target }
-    );
-
-    loadFiles(currentPath);
-}
-
-// ------------------------------------------------
-// RENAME / MOVE (POST)
-// ------------------------------------------------
-async function renameEntry() {
-    const target = currentIsDir ? currentPath : currentFile;
-    if (!target) return;
-
-    const name = prompt("New name:");
-    if (!name) return;
-
-    const parts = target.split("/");
-    parts.pop();
-    const to = parts.length ? parts.join("/") + "/" + name : name;
-
-    await postJson(
-        `${API}/servers/files/move`,
-        { id: serverId, from: target, to, overwrite: false }
-    );
+    await fetch(`${API}/servers/files/delete`, {
+        method: "POST",
+        headers: authHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify({
+            id: serverId,
+            path: currentFile
+        })
+    });
 
     loadFiles(currentPath);
 }
 
-// ------------------------------------------------
-// MKDIR (POST)
-// ------------------------------------------------
+/* ---------- CREATE DIR ---------- */
 async function createFolder() {
     const name = prompt("Folder name:");
     if (!name) return;
 
-    const full = currentPath ? currentPath + "/" + name : name;
-
-    await postJson(
-        `${API}/servers/files/mkdir`,
-        { id: serverId, path: full }
-    );
+    await fetch(`${API}/servers/files/mkdir`, {
+        method: "POST",
+        headers: authHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify({
+            id: serverId,
+            path: joinPath(currentPath, name)
+        })
+    });
 
     loadFiles(currentPath);
 }
 
-// ------------------------------------------------
-// UPLOAD (multipart POST)
-// ------------------------------------------------
-function uploadFile() {
-    const i = document.createElement("input");
-    i.type = "file";
+/* ---------- RENAME / MOVE ---------- */
+async function renameEntry() {
+    if (!currentFile) return;
 
-    i.onchange = () => {
-        const fd = new FormData();
-        fd.append("id", serverId);
-        fd.append("path", currentPath.endsWith("/") ? currentPath : currentPath + "/");
-        fd.append("file", i.files[0]);
+    const name = prompt("New name:");
+    if (!name) return;
 
-        fetch(`${API}/servers/files/upload`, {
-            method: "POST",
-            headers: auth(),
-            body: fd
-        }).then(() => loadFiles(currentPath));
-    };
+    const target = joinPath(currentPath, name);
 
-    i.click();
-}
-
-// ------------------------------------------------
-// DOWNLOAD (GET)
-// ------------------------------------------------
-async function downloadFile() {
-    if (!currentFile || currentIsDir) return;
-
-    const token = tokenEl.value.trim();
-    if (!token) {
-        alert("Authorization token required");
-        return;
-    }
-
-    const url =
-        `${API}/servers/files/download` +
-        `?id=${encodeURIComponent(serverId)}` +
-        `&path=${encodeURIComponent(currentFile)}`;
-
-    const res = await fetch(url, {
-        method: "GET",
-        headers: {
-            "Authorization": token
-        }
+    await fetch(`${API}/servers/files/move`, {
+        method: "POST",
+        headers: authHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify({
+            id: serverId,
+            from: currentFile,
+            to: target
+        })
     });
 
-    if (!res.ok) {
-        const msg = await res.text();
-        alert("Download failed: " + msg);
-        return;
-    }
+    loadFiles(currentPath);
+}
 
-    const blob = await res.blob();
-    const fileName = currentFile.split("/").pop();
+/* ---------- DOWNLOAD ---------- */
+function downloadFile() {
+    if (!currentFile || currentIsDir) return;
 
-    const objectUrl = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = objectUrl;
-    a.download = fileName;
-    document.body.appendChild(a);
-    a.click();
+    window.open(
+        `${API}/servers/files/download?id=${serverId}&path=${encodeURIComponent(currentFile)}`,
+        "_blank"
+    );
+}
 
-    a.remove();
-    URL.revokeObjectURL(objectUrl);
+/* ---------- UPLOAD ---------- */
+async function uploadFile() {
+    const input = document.createElement("input");
+    input.type = "file";
+
+    input.onchange = async () => {
+        const file = input.files[0];
+        if (!file) return;
+
+        const form = new FormData();
+        form.append("id", serverId);
+        form.append("path", currentPath.endsWith("/") ? currentPath : currentPath + "/");
+        form.append("file", file);
+
+        await fetch(`${API}/servers/files/upload`, {
+            method: "POST",
+            headers: authHeaders(),
+            body: form
+        });
+
+        loadFiles(currentPath);
+    };
+
+    input.click();
 }
 </script>
 
