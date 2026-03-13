@@ -109,7 +109,7 @@ textarea {
 <body>
 
 <div id="top-bar">
-    <input id="token" placeholder="Authorization token (Bearer ...)" autocomplete="off">
+    <input id="token" placeholder="Authorization token" autocomplete="off">
     <button onclick="loadFiles()">Load</button>
     <button onclick="createFolder()">New Folder</button>
     <button onclick="uploadFile()">Upload</button>
@@ -146,7 +146,7 @@ const tokenEl = document.getElementById("token");
 
 function authHeaders(extra = {}) {
     return {
-        "Authorization": tokenEl.value,
+        "Authorization": "Bearer " + tokenEl.value,
         ...extra
     };
 }
@@ -311,7 +311,7 @@ function downloadFile() {
     if (!currentFile || currentIsDir) return;
 
     window.open(
-        `${API}/servers/files/download?id=${serverId}&path=${encodeURIComponent(currentFile)}`,
+        `${API}/servers/files/download?id=${serverId}&token=${tokenEl.value}&path=${encodeURIComponent(currentFile)}`,
         "_blank"
     );
 }
