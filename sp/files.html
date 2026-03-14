@@ -307,13 +307,39 @@ async function renameEntry() {
 }
 
 /* ---------- DOWNLOAD ---------- */
-function downloadFile() {
+async function downloadFile() {
     if (!currentFile || currentIsDir) return;
 
-    window.open(
-        `${API}/servers/files/download?id=${serverId}&path=${encodeURIComponent(currentFile)}`,
-        "_blank"
-    );
+    const url = `${API}/servers/files/download?id=${serverId}&path=${encodeURIComponent(currentFile)}`;
+
+    try {
+        const res = await fetch(url, {
+            headers: authHeaders()
+        });
+
+        if (!res.ok) {
+            alert("Download failed");
+            return;
+        }
+
+        const blob = await res.blob();
+        const objectUrl = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = objectUrl;
+        a.download = currentFile.split("/").pop(); // filename
+        a.style.display = "none";
+
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        URL.revokeObjectURL(objectUrl);
+
+    } catch (err) {
+        console.error(err);
+        alert("Download error");
+    }
 }
 
 /* ---------- UPLOAD ---------- */
